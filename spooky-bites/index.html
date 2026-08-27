@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home · Spooky Bites</title>
+  <meta name="description" content="Halloween baking that's equal parts creepy and cute — recipes, decorating techniques, and party bakes in marigold, orange, and purple." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#8a1a9c" />
+  <link rel="canonical" href="https://suzannev0.github.io/SheCodesHomework/spooky-bites/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Spooky Bites" />
+  <meta property="og:title" content="Home · Spooky Bites" />
+  <meta property="og:description" content="Halloween baking that's equal parts creepy and cute — recipes, decorating techniques, and party bakes." />
+  <meta property="og:url" content="https://suzannev0.github.io/SheCodesHomework/spooky-bites/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Home · Spooky Bites" />
+  <meta name="twitter:description" content="Halloween baking that's equal parts creepy and cute — recipes, decorating techniques, and party bakes." />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M28 42 h44 l-7 40 a5 5 0 0 1 -5 4 H40 a5 5 0 0 1 -5 -4 Z' fill='%23d9641b'/><path d='M50 10 a18 15 0 0 1 16 10 a14 12 0 0 1 3 22 H31 a14 12 0 0 1 3 -22 A18 15 0 0 1 50 10 Z' fill='%238a1a9c'/><circle cx='50' cy='9' r='5' fill='%23eaa521'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="floaters" aria-hidden="true">
+    <span class="floater f1">🦇</span>
+    <span class="floater f2">🧁</span>
+    <span class="floater f3">🍬</span>
+    <span class="floater f4">🕸️</span>
+    <span class="floater f5">🎃</span>
+  </div>
+
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">🧁 Spooky Bites</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="techniques.html">Techniques</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">☰</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>🧁 Spooky Bites 🧁</h1>
+    <p class="tagline">Halloween baking that's equal parts creepy and cute.</p>
+  </header>
+
+  <main class="container">
+    <section id="countdown">
+      <h2>Countdown to Halloween</h2>
+      <div class="countdown-tombstones">
+        <div class="tombstone">
+          <span class="tombstone-value" id="cd-days">00</span>
+          <span class="tombstone-label">Days</span>
+        </div>
+        <div class="tombstone">
+          <span class="tombstone-value" id="cd-hours">00</span>
+          <span class="tombstone-label">Hours</span>
+        </div>
+        <div class="tombstone">
+          <span class="tombstone-value" id="cd-minutes">00</span>
+          <span class="tombstone-label">Min</span>
+        </div>
+        <div class="tombstone">
+          <span class="tombstone-value" id="cd-seconds">00</span>
+          <span class="tombstone-label">Sec</span>
+        </div>
+      </div>
+      <p class="sr-only" id="countdown-sr" aria-live="polite" aria-atomic="true"></p>
+    </section>
+
+    <p style="text-align: center; margin-bottom: 2.5rem;">
+      <button class="btn btn-glow" type="button" data-open-newsletter>📧 Subscribe to our Newsletter</button>
+    </p>
+
+    <section id="about">
+      <h2>About This Site</h2>
+      <p>
+        Welcome to Spooky Bites! This is a little kitchen corner of the web for
+        Halloween baking — cobweb cakes, meringue bones, and pumpkin everything.
+        Add your own recipes, decorating notes, or party menus here.
+      </p>
+    </section>
+
+    <section id="quiz" aria-labelledby="quiz-heading" style="text-align: center;">
+      <h2 id="quiz-heading">What Is Your Halloween Baking Style?</h2>
+      <p style="color: var(--muted); margin-bottom: 1.25rem;">
+        Answer a few questions to find out whether you're a perfectionist decorator, a mad scientist, or a one-bowl chaos baker.
+      </p>
+      <a class="btn btn-glow" href="quiz.html">Take Quiz</a>
+    </section>
+
+    <section id="features" aria-labelledby="features-heading">
+      <h2 id="features-heading">Explore the Kitchen</h2>
+      <div class="feature-grid">
+        <a class="feature-card" href="recipes.html">
+          <span class="feature-emoji" aria-hidden="true">🎂</span>
+          <p class="feature-kicker">Recipes</p>
+          <h3>10 Halloween Bakes</h3>
+          <p>Featured pick: Graveyard Dirt Cake — the crowd-pleasing make-ahead party dessert.</p>
+        </a>
+        <a class="feature-card" href="techniques.html">
+          <span class="feature-emoji" aria-hidden="true">🎨</span>
+          <p class="feature-kicker">Techniques</p>
+          <h3>Halloween Baking Techniques</h3>
+          <p>Featured tip: how to get a true purple that doesn't turn grey in the oven.</p>
+        </a>
+        <a class="feature-card" href="quiz.html">
+          <span class="feature-emoji" aria-hidden="true">🔮</span>
+          <p class="feature-kicker">Quiz</p>
+          <h3>Your Baking Style</h3>
+          <p>Featured result: The Mad Scientist — if it bubbles or glows, you're preheating the oven.</p>
+        </a>
+        <a class="feature-card" href="contact.html">
+          <span class="feature-emoji" aria-hidden="true">✉️</span>
+          <p class="feature-kicker">Contact</p>
+          <h3>Send Us a Note</h3>
+          <p>Got a recipe to share or a baking disaster to confess? We want to hear it.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="techniques.html">Techniques</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <ul class="footer-legal">
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+      </ul>
+      <p class="footer-copyright">&copy; 2026 Spooky Bites. Baked with 🧡 for Halloween.</p>
+    </div>
+  </footer>
+
+  <!-- Newsletter modal -->
+  <div class="modal-overlay" id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-heading" hidden>
+    <div class="modal-box">
+      <button class="modal-close" id="newsletter-close" type="button" aria-label="Close newsletter signup">✕</button>
+      <h2 id="newsletter-heading">Join the Spooky Bites newsletter</h2>
+      <p>Get one Halloween bake, one decorating tip, and one party menu in your inbox every October.</p>
+
+      <form id="newsletter-form" novalidate>
+        <div class="form-field">
+          <label for="newsletter-name">Name</label>
+          <input type="text" id="newsletter-name" name="name" autocomplete="name" required />
+        </div>
+        <div class="form-field">
+          <label for="newsletter-email">Email</label>
+          <input type="email" id="newsletter-email" name="email" autocomplete="email" required />
+        </div>
+        <button class="btn" type="submit">Subscribe</button>
+      </form>
+
+      <div class="form-success" id="newsletter-success" hidden>
+        Thanks! You're on the list — keep an eye on your inbox. 🧁
+      </div>
+    </div>
+  </div>
+
+  <script src="js/countdown.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
