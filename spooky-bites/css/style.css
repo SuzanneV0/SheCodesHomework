@@ -17,8 +17,8 @@
   --card-bg: #fbf4e4;
   --card-border: rgba(44, 26, 34, 0.16);
   --rule: rgba(44, 26, 34, 0.16);
-  --ring: #b0852f;
-  --gold: #b0852f;
+  --ring: #7d5f1e;
+  --gold: #7d5f1e;
   --plum: #2c1a22;
   --oxblood: #7a2438;
   --overlay: rgba(28, 15, 21, 0.62);
@@ -43,7 +43,7 @@
     --nav-bg: #120a0f;
     --nav-text: #ede1cb;
     --nav-highlight: #9a3350;
-    --nav-highlight-text: #e7c785;
+    --nav-highlight-text: #f2d7a6;
     --heading: #ece0c9;
     --text: #dccfbe;
     --muted: #a3927f;
@@ -117,6 +117,28 @@
 .skip-link:focus {
   top: 0;
   outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ---------- Visible keyboard focus (WCAG 2.4.7) ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* On the dark nav / footer the gold ring is low-contrast — use the light ink */
+.nav-brand:focus-visible,
+.nav-links a:focus-visible,
+.nav-toggle:focus-visible,
+.theme-toggle:focus-visible,
+.footer-nav a:focus-visible,
+.footer-legal a:focus-visible {
+  outline: 2px solid var(--nav-text);
   outline-offset: 2px;
 }
 
@@ -242,7 +264,11 @@ img {
   box-shadow:
     0 0 0 1px var(--gold),
     0 10px 26px -8px var(--glow);
-  outline: none;
+}
+
+.btn-glow:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
 }
 
 /* ---------- Navigation ---------- */
@@ -302,6 +328,18 @@ img {
   color: var(--nav-highlight-text);
 }
 
+.nav-links a[aria-current="page"] {
+  color: var(--nav-highlight-text);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+
+.footer-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .theme-toggle {
   background: transparent;
   border: 1px solid var(--nav-text);
@@ -349,7 +387,7 @@ img {
 }
 
 .nav-toggle:focus-visible {
-  outline: 3px solid var(--ring);
+  outline: 2px solid var(--nav-text);
   outline-offset: 2px;
 }
 
@@ -536,7 +574,7 @@ section > h2::after {
 
 .tombstone-label {
   font-size: 0.62rem;
-  color: #574d3c;
+  color: #443c2d;
 }
 
 @media (max-width: 480px) {
@@ -674,7 +712,11 @@ footer {
   transform: translateY(-3px);
   border-color: var(--gold);
   box-shadow: 0 16px 30px -16px rgba(0, 0, 0, 0.4);
-  outline: none;
+}
+
+.feature-card:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
 }
 
 .feature-card .feature-kicker {
@@ -817,6 +859,21 @@ footer {
 }
 
 .form-success[hidden] {
+  display: none;
+}
+
+.form-error {
+  background: var(--card-bg);
+  border: 1px solid var(--oxblood);
+  border-left: 3px solid var(--oxblood);
+  border-radius: 0.35rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.form-error[hidden] {
   display: none;
 }
 
@@ -1229,9 +1286,34 @@ article.page-article h2::after,
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .floater {
     animation: none;
     display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .feature-card:hover,
+  .feature-card:focus-visible {
+    transform: none;
+  }
+
+  .btn:active,
+  .theme-toggle:active,
+  .nav-toggle:active,
+  .modal-close:active {
+    transform: none;
   }
 }
 
