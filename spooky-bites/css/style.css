@@ -852,6 +852,113 @@ article.page-article p {
   text-align: center;
 }
 
+/* ---------- Recipe detail pages ---------- */
+.recipe {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.recipe-back {
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.recipe-back a {
+  text-decoration: none;
+  color: var(--ring);
+  font-weight: 600;
+}
+
+.recipe-back a:hover,
+.recipe-back a:focus-visible {
+  text-decoration: underline;
+}
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-meta span {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.recipe > p {
+  margin-bottom: 1rem;
+}
+
+.recipe h2 {
+  margin: 1.75rem 0 0.75rem;
+}
+
+.recipe-ingredients {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.recipe-ingredients li {
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.recipe-ingredients li::before {
+  content: "\2013"; /* en dash */
+  position: absolute;
+  left: 0;
+  color: var(--ring);
+  font-weight: 700;
+}
+
+.recipe-method {
+  display: grid;
+  gap: 1rem;
+  padding-left: 1.3rem;
+}
+
+.recipe-method li {
+  padding-left: 0.35rem;
+}
+
+.recipe-method li::marker {
+  color: var(--ring);
+  font-family: var(--font-heading);
+}
+
+.recipe-note {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--ring);
+  border-radius: 0.5rem;
+  padding: 1rem 1.1rem;
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.item-more {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.item-more a {
+  text-decoration: none;
+  color: var(--ring);
+  font-weight: 600;
+}
+
+.item-more a:hover,
+.item-more a:focus-visible {
+  text-decoration: underline;
+}
+
 /* ---------- Floating background decorations ---------- */
 .floaters {
   position: fixed;
