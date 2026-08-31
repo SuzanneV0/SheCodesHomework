@@ -52,6 +52,13 @@
     });
   }
 
+  /* ---- Mark the current page in the nav (aria-current) ---- */
+  var here = location.pathname.replace(/\/$/, "/index.html").split("/").pop();
+  document.querySelectorAll(".nav-links a, .footer-nav a").forEach(function (a) {
+    var target = a.getAttribute("href").split("/").pop();
+    if (target === here) a.setAttribute("aria-current", "page");
+  });
+
   /* ---- Mobile hamburger nav ---- */
   var navToggle = document.getElementById("nav-toggle");
   var navLinks = document.getElementById("nav-links");
@@ -106,8 +113,36 @@
     }
   }
 
+  function getFocusable() {
+    if (!modal) return [];
+    return Array.prototype.filter.call(
+      modal.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      ),
+      function (el) {
+        return el.offsetParent !== null;
+      }
+    );
+  }
+
   function onKeydown(e) {
-    if (e.key === "Escape") closeModal();
+    if (e.key === "Escape") {
+      closeModal();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    // Keep Tab focus inside the dialog (WCAG 2.4.3 / 2.1.2)
+    var items = getFocusable();
+    if (!items.length) return;
+    var first = items[0];
+    var last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 
   openBtns.forEach(function (btn) {
@@ -127,7 +162,12 @@
       e.preventDefault();
       // No backend is wired up yet -- this just confirms the interaction locally.
       form.hidden = true;
-      if (successMsg) successMsg.hidden = false;
+      if (successMsg) {
+        successMsg.hidden = false;
+        successMsg.focus();
+      } else if (closeBtn) {
+        closeBtn.focus();
+      }
     });
   }
 })();

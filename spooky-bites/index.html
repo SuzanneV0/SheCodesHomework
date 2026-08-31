@@ -37,8 +37,8 @@
 
   <nav class="site-nav" aria-label="Primary">
     <div class="nav-inner">
-      <a class="nav-brand" href="index.html">🧁 Spooky Bites</a>
-      <ul class="nav-links" id="nav-links">
+      <a class="nav-brand" href="index.html"><span aria-hidden="true">🧁</span> Spooky Bites</a>
+      <ul class="nav-links" id="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="recipes.html">Recipes</a></li>
         <li><a href="techniques.html">Techniques</a></li>
@@ -57,10 +57,10 @@
     <p class="tagline">Halloween baking that's equal parts creepy and cute.</p>
   </header>
 
-  <main id="main" class="container">
+  <main id="main" tabindex="-1" class="container">
     <section id="countdown">
       <h2>Countdown to Halloween</h2>
-      <div class="countdown-tombstones">
+      <div class="countdown-tombstones" aria-hidden="true">
         <div class="tombstone">
           <span class="tombstone-value" id="cd-days">00</span>
           <span class="tombstone-label">Days</span>
@@ -82,7 +82,7 @@
     </section>
 
     <p style="text-align: center; margin-bottom: 2.5rem;">
-      <button class="btn btn-glow" type="button" data-open-newsletter>📧 Subscribe to our Newsletter</button>
+      <button class="btn btn-glow" type="button" data-open-newsletter><span aria-hidden="true">📧</span> Subscribe to our Newsletter</button>
     </p>
 
     <section id="about">
@@ -135,7 +135,7 @@
 
   <footer>
     <div class="footer-inner">
-      <ul class="footer-nav">
+      <ul class="footer-nav" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="recipes.html">Recipes</a></li>
         <li><a href="techniques.html">Techniques</a></li>
@@ -144,12 +144,12 @@
         <li><a href="quiz.html">Quiz</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <ul class="footer-legal">
+      <ul class="footer-legal" role="list">
         <li><a href="terms.html">Terms of Use</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="cookies.html">Cookie Policy</a></li>
       </ul>
-      <p class="footer-copyright">&copy; 2026 Spooky Bites. Baked with 🧡 for Halloween.</p>
+      <p class="footer-copyright">&copy; 2026 Spooky Bites. Baked with <span aria-hidden="true">🧡</span> for Halloween.</p>
     </div>
   </footer>
 
@@ -172,7 +172,7 @@
         <button class="btn" type="submit">Subscribe</button>
       </form>
 
-      <div class="form-success" id="newsletter-success" hidden>
+      <div class="form-success" id="newsletter-success" role="status" tabindex="-1" hidden>
         Thanks! You're on the list — keep an eye on your inbox. 🧁
       </div>
     </div>
