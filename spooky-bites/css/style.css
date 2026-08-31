@@ -80,6 +80,31 @@
   padding: 0;
 }
 
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -3.5rem;
+  z-index: 200;
+  background: var(--heading);
+  color: var(--bg);
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  font-family: var(--font-body);
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+:target {
+  scroll-margin-top: 5rem;
+}
+
 html {
   scroll-behavior: smooth;
 }
