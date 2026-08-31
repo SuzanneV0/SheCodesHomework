@@ -959,6 +959,74 @@ article.page-article p {
   text-decoration: underline;
 }
 
+/* ---------- Menu planner ---------- */
+.planner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.planner-intro {
+  margin-bottom: 1.5rem;
+}
+
+.planner-group {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.85rem;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.1rem;
+}
+
+.planner-group > h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.15rem;
+}
+
+.planner-group > p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.planner-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.planner-check input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  accent-color: var(--ring);
+}
+
+.planner-check input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.planner-check input:checked + span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.planner-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.planner-count {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
 /* ---------- Floating background decorations ---------- */
 .floaters {
   position: fixed;
