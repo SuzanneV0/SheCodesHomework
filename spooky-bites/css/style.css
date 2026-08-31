@@ -197,10 +197,12 @@ img {
 
 /* ---------- Buttons ---------- */
 .btn {
+  display: inline-block;
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.03em;
+  text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 0.3rem;
