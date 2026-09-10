@@ -64,9 +64,6 @@
   function setAuthMode(mode) {
     state.mode = mode;
     var signup = mode === "signup";
-    $("auth-sub").textContent = signup
-      ? "Create the one admin account for this panel."
-      : "Sign in to manage subscribers, recipes, and favourites.";
     $("auth-submit").textContent = signup ? "Create account" : "Sign in";
     $("auth-password").setAttribute("autocomplete", signup ? "new-password" : "current-password");
     $("auth-toggle-text").textContent = signup ? "Already set up?" : "No account yet?";
