@@ -73,6 +73,15 @@
       <section id="tab-subscribers" class="tabpanel hidden">
         <div class="panel">
           <h2>Subscribers</h2>
+          <div class="admin-filter">
+            <input type="search" id="subs-search" placeholder="Search name or email…" aria-label="Search subscribers" />
+            <select id="subs-status" aria-label="Filter by status">
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+            <span class="admin-filter-count" id="subs-count" role="status" aria-live="polite"></span>
+          </div>
           <div class="table-scroll">
             <table class="data" id="subs-table">
               <thead><tr><th>Name</th><th>Email</th><th>Status</th><th>Signed up</th><th>Faves</th><th></th></tr></thead>
@@ -105,6 +114,19 @@
       <section id="tab-recipes" class="tabpanel hidden">
         <div class="panel">
           <h2>Recipes</h2>
+          <div class="admin-filter">
+            <input type="search" id="recipes-search" placeholder="Search title, slug, description…" aria-label="Search recipes" />
+            <select id="recipes-cat-filter" aria-label="Filter by category">
+              <option value="">All categories</option>
+            </select>
+            <select id="recipes-diff-filter" aria-label="Filter by difficulty">
+              <option value="">Any difficulty</option>
+              <option>Easy</option>
+              <option>Medium</option>
+              <option>Hard</option>
+            </select>
+            <span class="admin-filter-count" id="recipes-count" role="status" aria-live="polite"></span>
+          </div>
           <div class="table-scroll">
             <table class="data" id="recipes-table">
               <thead><tr><th>Title</th><th>Slug</th><th>Category</th><th>Difficulty</th><th>Prep</th><th>Faves</th><th></th></tr></thead>
@@ -142,6 +164,10 @@
       <section id="tab-favourites" class="tabpanel hidden">
         <div class="panel">
           <h2>Favourites</h2>
+          <div class="admin-filter">
+            <input type="search" id="faves-search" placeholder="Search subscriber or recipe…" aria-label="Search favourites" />
+            <span class="admin-filter-count" id="faves-count" role="status" aria-live="polite"></span>
+          </div>
           <div class="table-scroll">
             <table class="data" id="faves-table">
               <thead><tr><th>Subscriber</th><th>Recipe</th><th>Saved</th><th></th></tr></thead>

@@ -18,6 +18,11 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var state = { subscribers: [], recipes: [], favourites: [], mode: "signin" };
+  var filters = {
+    subsQ: "", subsStatus: "",
+    recipesQ: "", recipesCat: "", recipesDiff: "",
+    favesQ: ""
+  };
 
   /* ------------------------------------------------------------------ */
   /* Helpers                                                            */
@@ -183,6 +188,70 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* Search + filter                                                    */
+  /* ------------------------------------------------------------------ */
+  function has(text, q) {
+    return !q || String(text).toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  }
+
+  function filteredSubs() {
+    return state.subscribers.filter(function (s) {
+      var okQ = has(s.full_name + " " + s.email, filters.subsQ);
+      var okS = !filters.subsStatus ||
+        (filters.subsStatus === "active" ? s.is_active : !s.is_active);
+      return okQ && okS;
+    });
+  }
+
+  function filteredRecipes() {
+    return state.recipes.filter(function (r) {
+      var okQ = has([r.title, r.slug, r.category, r.description].join(" "), filters.recipesQ);
+      var okC = !filters.recipesCat || r.category === filters.recipesCat;
+      var okD = !filters.recipesDiff || r.difficulty === filters.recipesDiff;
+      return okQ && okC && okD;
+    });
+  }
+
+  function filteredFaves() {
+    return state.favourites.filter(function (f) {
+      var who = f.subscribers ? f.subscribers.full_name + " " + f.subscribers.email : "";
+      var what = f.recipes ? f.recipes.title + " " + f.recipes.slug : "";
+      return has(who + " " + what, filters.favesQ);
+    });
+  }
+
+  function countLabel(shown, total) {
+    return shown === total ? total + " total" : "Showing " + shown + " of " + total;
+  }
+
+  function wireFilters() {
+    $("subs-search").addEventListener("input", function () {
+      filters.subsQ = this.value.trim();
+      renderSubscribers();
+    });
+    $("subs-status").addEventListener("change", function () {
+      filters.subsStatus = this.value;
+      renderSubscribers();
+    });
+    $("recipes-search").addEventListener("input", function () {
+      filters.recipesQ = this.value.trim();
+      renderRecipes();
+    });
+    $("recipes-cat-filter").addEventListener("change", function () {
+      filters.recipesCat = this.value;
+      renderRecipes();
+    });
+    $("recipes-diff-filter").addEventListener("change", function () {
+      filters.recipesDiff = this.value;
+      renderRecipes();
+    });
+    $("faves-search").addEventListener("input", function () {
+      filters.favesQ = this.value.trim();
+      renderFavourites();
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Summary                                                            */
   /* ------------------------------------------------------------------ */
   function renderSummary() {
@@ -219,11 +288,14 @@
   /* ------------------------------------------------------------------ */
   function renderSubscribers() {
     var tbody = $("subs-table").querySelector("tbody");
-    if (!state.subscribers.length) {
-      tbody.innerHTML = '<tr><td colspan="6" class="empty">No subscribers.</td></tr>';
+    var rows = filteredSubs();
+    $("subs-count").textContent = countLabel(rows.length, state.subscribers.length);
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="6" class="empty">' +
+        (state.subscribers.length ? "No subscribers match." : "No subscribers.") + "</td></tr>";
       return;
     }
-    tbody.innerHTML = state.subscribers.map(function (s) {
+    tbody.innerHTML = rows.map(function (s) {
       return "<tr>" +
         "<td>" + esc(s.full_name) + "</td>" +
         "<td>" + esc(s.email) + "</td>" +
@@ -300,13 +372,29 @@
   /* ------------------------------------------------------------------ */
   /* Recipes CRUD                                                       */
   /* ------------------------------------------------------------------ */
+  function syncCategoryFilter() {
+    var sel = $("recipes-cat-filter");
+    var cats = state.recipes.map(function (r) { return r.category; })
+      .filter(function (c, i, a) { return c && a.indexOf(c) === i; })
+      .sort();
+    var current = sel.value;
+    sel.innerHTML = '<option value="">All categories</option>' +
+      cats.map(function (c) { return "<option>" + esc(c) + "</option>"; }).join("");
+    if (cats.indexOf(current) !== -1) sel.value = current;
+    else filters.recipesCat = "";
+  }
+
   function renderRecipes() {
     var tbody = $("recipes-table").querySelector("tbody");
-    if (!state.recipes.length) {
-      tbody.innerHTML = '<tr><td colspan="7" class="empty">No recipes.</td></tr>';
+    syncCategoryFilter();
+    var rows = filteredRecipes();
+    $("recipes-count").textContent = countLabel(rows.length, state.recipes.length);
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="7" class="empty">' +
+        (state.recipes.length ? "No recipes match." : "No recipes.") + "</td></tr>";
       return;
     }
-    tbody.innerHTML = state.recipes.map(function (r) {
+    tbody.innerHTML = rows.map(function (r) {
       return "<tr>" +
         "<td>" + esc(r.title) + "</td>" +
         '<td><span class="muted">' + esc(r.slug) + "</span></td>" +
@@ -403,10 +491,13 @@
   /* ------------------------------------------------------------------ */
   function renderFavourites() {
     var tbody = $("faves-table").querySelector("tbody");
-    if (!state.favourites.length) {
-      tbody.innerHTML = '<tr><td colspan="4" class="empty">No favourites.</td></tr>';
+    var rows = filteredFaves();
+    $("faves-count").textContent = countLabel(rows.length, state.favourites.length);
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="4" class="empty">' +
+        (state.favourites.length ? "No favourites match." : "No favourites.") + "</td></tr>";
     } else {
-      tbody.innerHTML = state.favourites.map(function (f) {
+      tbody.innerHTML = rows.map(function (f) {
         var who = f.subscribers ? (f.subscribers.full_name + " (" + f.subscribers.email + ")") : "#" + f.subscriber_id;
         var what = f.recipes ? f.recipes.title : "#" + f.recipe_id;
         return "<tr>" +
@@ -463,5 +554,6 @@
   /* Boot                                                               */
   /* ------------------------------------------------------------------ */
   setAuthMode("signin");
+  wireFilters();
   db.auth.getSession().then(function (res) { route(res.data.session); });
 })();
