@@ -1032,32 +1032,6 @@ footer {
   margin: 0 0 1.5rem;
 }
 
-.fav-bar {
-  font-size: 0.78rem;
-  color: var(--muted);
-  margin-bottom: 1.25rem;
-}
-
-.fav-bar[hidden] {
-  display: none;
-}
-
-.fav-switch {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  color: var(--gold);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  cursor: pointer;
-}
-
-.fav-switch:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-}
-
 /* ---------- Emoji tiles (stand in for recipe photos) ---------- */
 .emoji-tile {
   aspect-ratio: 1 / 1;
