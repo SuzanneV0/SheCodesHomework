@@ -46,44 +46,57 @@
 
   <header class="page-hero">
     <h1>Privacy Policy</h1>
-    <p>Last updated: August 27, 2026</p>
+    <p>Last updated: September 10, 2026</p>
   </header>
 
   <main id="main" tabindex="-1" class="page-content container">
     <article class="page-article">
       <p>
-        Short version: this is a small personal project, and it does not collect, store, or share
-        any personal data. Here's the detail behind that.
+        Short version: this is a student project. The newsletter and "save to favourites"
+        features store the name, email address, and recipe choices you give them in a hosted
+        database. Nothing else about you is collected. Please don't use an email address you
+        would mind seeing in a class demo.
       </p>
 
-      <h2>Forms (Newsletter &amp; Contact)</h2>
+      <h2>Newsletter Sign-up</h2>
       <p>
-        The "Subscribe to our Newsletter" pop-up and the Contact page both ask for a name and email
-        address. On this site, those forms are front-end demos only: when you submit one, your
-        browser shows a confirmation message, but the information you typed is never sent to a
-        server, saved to a database, or shared with anyone. As soon as you close or reload the page,
-        it's gone.
+        The "Subscribe to our Newsletter" pop-up asks for your name and email address. When you
+        submit it, those two fields are sent to a <a href="https://supabase.com">Supabase</a>
+        database (hosted PostgreSQL) and stored in a <code>subscribers</code> table so the list
+        persists. There is no actual newsletter — no email is ever sent to you.
       </p>
 
-      <h2>Theme Preference</h2>
+      <h2>Saved Favourites</h2>
       <p>
-        If you switch between light and dark mode using the toggle in the navigation bar, that
-        choice is saved using your browser's local storage, on your device only. It is never
-        transmitted anywhere, and no other visitor or site owner can see it. See our
-        <a href="cookies.html">Cookie Policy</a> for more on how that's different from a cookie.
+        On the recipes pages you can save a recipe to your favourites. This records which recipe
+        you saved against your email address in the same database (a <code>favourites</code>
+        table). Saving a favourite also adds you to the <code>subscribers</code> table, because a
+        favourite has to belong to someone. You can remove a favourite at any time, which deletes
+        that row.
+      </p>
+
+      <h2>Data Stored in Your Browser</h2>
+      <p>
+        Your light/dark theme choice, your menu-planner checkboxes, and — once you have subscribed
+        or saved a favourite — your name and email are kept in your browser's local storage, on
+        your device only. The stored email lets the site show which recipes you have already
+        favourited when you come back. Use the "Not you?" link on the recipes page to clear it.
+        See our <a href="cookies.html">Cookie Policy</a> for how local storage differs from a cookie.
       </p>
 
       <h2>Analytics &amp; Tracking</h2>
       <p>
-        This site does not run any analytics, advertising, or tracking scripts. We don't know who
-        you are, what pages you've visited, or anything else about you as a visitor.
+        This site does not run any analytics, advertising, or tracking scripts. Beyond the
+        subscriber and favourite records described above, we don't know who you are or what pages
+        you've visited.
       </p>
 
       <h2>Third-Party Services</h2>
       <p>
-        Page fonts are loaded from Google Fonts, which may receive standard technical request
-        information (like your IP address) as part of delivering the font files, the same as any
-        other font or image hosted off-site. No other third-party service is used on this site.
+        Page fonts load from Google Fonts, and the newsletter and favourites features talk to
+        Supabase; both may receive standard technical request information (such as your IP address)
+        as part of serving those requests. No other third-party service is used on this site. The
+        Contact form is still a front-end-only demo and does not send anything anywhere.
       </p>
 
       <h2>Children's Privacy</h2>
