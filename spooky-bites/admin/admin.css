@@ -1,0 +1,189 @@
+/* Spooky Bites — admin app. Standalone styles (apothecary palette). */
+
+:root {
+  --bg: #17100f;
+  --panel: #211719;
+  --panel-2: #2b1f22;
+  --line: rgba(231, 217, 186, 0.14);
+  --ink: #ece0cf;
+  --muted: #a79383;
+  --gold: #cfa557;
+  --oxblood: #b0455f;
+  --green: #5f9e6e;
+  --danger: #d1495b;
+  --font-head: "Playfair Display", Georgia, serif;
+  --font-body: "Ysabeau", "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-head); font-weight: 600; line-height: 1.2; }
+
+a { color: var(--gold); }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.hidden { display: none !important; }
+
+/* ---------- Layout ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar .brand {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.topbar .who { color: var(--muted); font-size: 0.85rem; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 1.5rem; }
+
+/* ---------- Auth screen ---------- */
+.auth {
+  max-width: 380px;
+  margin: 12vh auto;
+  padding: 2rem;
+  background: var(--panel);
+  border: 1px solid var(--gold);
+  border-radius: 0.4rem;
+}
+
+.auth h1 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+.auth p.sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.4rem; }
+
+.auth .toggle {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+.auth .toggle button {
+  background: none;
+  border: none;
+  color: var(--gold);
+  text-decoration: underline;
+  font: inherit;
+}
+
+/* ---------- Forms ---------- */
+label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin-bottom: 0.3rem; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  margin-bottom: 0.9rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+textarea { min-height: 4.5rem; resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+.field-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.field-row > div { flex: 1 1 160px; }
+
+.checkbox-line { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.9rem; }
+.checkbox-line input { width: auto; margin: 0; }
+.checkbox-line label { margin: 0; text-transform: none; letter-spacing: 0; font-size: 0.9rem; color: var(--ink); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: var(--oxblood);
+  color: #f6ecd8;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: 0.55; cursor: default; }
+.btn.ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.btn.ghost:hover { border-color: var(--gold); color: var(--gold); filter: none; }
+.btn.small { padding: 0.3rem 0.65rem; font-size: 0.78rem; }
+.btn.danger { background: transparent; border-color: var(--danger); color: var(--danger); }
+.btn.danger:hover { background: var(--danger); color: #fff; filter: none; }
+
+.msg { font-size: 0.88rem; margin: 0.6rem 0; padding: 0.6rem 0.8rem; border-radius: 0.3rem; }
+.msg.error { background: rgba(209, 73, 91, 0.14); border: 1px solid var(--danger); color: #f3c9cf; }
+.msg.ok { background: rgba(95, 158, 110, 0.14); border: 1px solid var(--green); color: #cfe6d4; }
+
+/* ---------- Tabs ---------- */
+.tabs { display: flex; flex-wrap: wrap; gap: 0.3rem; border-bottom: 1px solid var(--line); margin-bottom: 1.5rem; }
+.tabs button {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.tabs button[aria-selected="true"] { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ---------- Summary cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 0.4rem; padding: 1.1rem 1.2rem; }
+.card .n { font-family: var(--font-head); font-size: 2rem; color: var(--gold); }
+.card .l { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+
+.summary-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.summary-cols h3 { font-size: 1.05rem; margin-bottom: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+.summary-cols ol, .summary-cols ul { margin-left: 1.1rem; font-size: 0.9rem; }
+.summary-cols li { margin-bottom: 0.3rem; }
+.summary-cols .muted { color: var(--muted); }
+
+/* ---------- Data tables ---------- */
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 0.4rem; padding: 1.25rem; margin-bottom: 1.5rem; }
+.panel h2 { font-size: 1.15rem; margin-bottom: 1rem; }
+.panel h3 { font-size: 0.95rem; margin: 0 0 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.table-scroll { overflow-x: auto; }
+table.data { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+table.data th, table.data td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.data th { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); font-weight: 600; }
+table.data tr:hover td { background: var(--panel-2); }
+table.data .actions { white-space: nowrap; text-align: right; }
+table.data .actions button { margin-left: 0.35rem; }
+
+.pill { display: inline-block; font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.pill.on { color: var(--green); border-color: var(--green); }
+.pill.off { color: var(--muted); }
+
+.editor { border-top: 1px solid var(--line); margin-top: 1.25rem; padding-top: 1.25rem; }
+.editor .editor-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.empty { color: var(--muted); font-style: italic; padding: 0.6rem; }
+
+@media (max-width: 560px) {
+  .wrap, .topbar { padding-left: 1rem; padding-right: 1rem; }
+}

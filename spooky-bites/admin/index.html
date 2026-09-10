@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · Spooky Bites</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#211719" />
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Ysabeau:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <!-- ============ Sign in ============ -->
+  <section id="auth-view" class="auth">
+    <h1>Spooky Bites Admin</h1>
+    <p class="sub" id="auth-sub">Sign in to manage subscribers, recipes, and favourites.</p>
+
+    <form id="auth-form">
+      <label for="auth-email">Email</label>
+      <input type="email" id="auth-email" autocomplete="email" required />
+      <label for="auth-password">Password</label>
+      <input type="password" id="auth-password" autocomplete="current-password" required minlength="6" />
+      <button class="btn" type="submit" id="auth-submit" style="width:100%">Sign in</button>
+    </form>
+
+    <div id="auth-msg" class="msg error hidden"></div>
+
+    <p class="toggle">
+      <span id="auth-toggle-text">No account yet?</span>
+      <button type="button" id="auth-toggle">Create the admin account</button>
+    </p>
+  </section>
+
+  <!-- ============ App ============ -->
+  <div id="app-view" class="hidden">
+    <header class="topbar">
+      <span class="brand">🧁 Spooky Bites Admin</span>
+      <span>
+        <span class="who" id="who"></span>
+        <button class="btn ghost small" id="signout" type="button">Sign out</button>
+      </span>
+    </header>
+
+    <main class="wrap">
+      <div id="app-msg" class="msg hidden"></div>
+
+      <nav class="tabs" role="tablist">
+        <button role="tab" data-tab="summary" aria-selected="true">Summary</button>
+        <button role="tab" data-tab="subscribers" aria-selected="false">Subscribers</button>
+        <button role="tab" data-tab="recipes" aria-selected="false">Recipes</button>
+        <button role="tab" data-tab="favourites" aria-selected="false">Favourites</button>
+      </nav>
+
+      <!-- Summary -->
+      <section id="tab-summary" class="tabpanel">
+        <div class="cards" id="summary-cards"></div>
+        <div class="summary-cols">
+          <div>
+            <h3>Most favourited</h3>
+            <ol id="summary-top"></ol>
+          </div>
+          <div>
+            <h3>Newest subscribers</h3>
+            <ul id="summary-recent"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Subscribers -->
+      <section id="tab-subscribers" class="tabpanel hidden">
+        <div class="panel">
+          <h2>Subscribers</h2>
+          <div class="table-scroll">
+            <table class="data" id="subs-table">
+              <thead><tr><th>Name</th><th>Email</th><th>Status</th><th>Signed up</th><th>Faves</th><th></th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="editor">
+            <h3 id="subs-editor-title">Add a subscriber</h3>
+            <form id="subs-form">
+              <input type="hidden" id="subs-id" />
+              <div class="field-row">
+                <div><label for="subs-name">Name</label><input type="text" id="subs-name" required /></div>
+                <div><label for="subs-email">Email</label><input type="email" id="subs-email" required /></div>
+              </div>
+              <div class="checkbox-line">
+                <input type="checkbox" id="subs-active" checked />
+                <label for="subs-active">Active (receiving the newsletter)</label>
+              </div>
+              <div class="editor-actions">
+                <button class="btn" type="submit" id="subs-save">Add subscriber</button>
+                <button class="btn ghost" type="button" id="subs-cancel">Clear</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recipes -->
+      <section id="tab-recipes" class="tabpanel hidden">
+        <div class="panel">
+          <h2>Recipes</h2>
+          <div class="table-scroll">
+            <table class="data" id="recipes-table">
+              <thead><tr><th>Title</th><th>Slug</th><th>Category</th><th>Difficulty</th><th>Prep</th><th>Faves</th><th></th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="editor">
+            <h3 id="recipes-editor-title">Add a recipe</h3>
+            <form id="recipes-form">
+              <input type="hidden" id="recipes-id" />
+              <div class="field-row">
+                <div><label for="recipes-title">Title</label><input type="text" id="recipes-title" required /></div>
+                <div><label for="recipes-slug">Slug</label><input type="text" id="recipes-slug" required title="lowercase letters, numbers and hyphens" /></div>
+              </div>
+              <div class="field-row">
+                <div><label for="recipes-category">Category</label><input type="text" id="recipes-category" required /></div>
+                <div><label for="recipes-difficulty">Difficulty</label>
+                  <select id="recipes-difficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select>
+                </div>
+                <div><label for="recipes-prep">Prep (minutes)</label><input type="number" id="recipes-prep" min="1" /></div>
+              </div>
+              <label for="recipes-desc">Description</label>
+              <textarea id="recipes-desc"></textarea>
+              <div class="editor-actions">
+                <button class="btn" type="submit" id="recipes-save">Add recipe</button>
+                <button class="btn ghost" type="button" id="recipes-cancel">Clear</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Favourites -->
+      <section id="tab-favourites" class="tabpanel hidden">
+        <div class="panel">
+          <h2>Favourites</h2>
+          <div class="table-scroll">
+            <table class="data" id="faves-table">
+              <thead><tr><th>Subscriber</th><th>Recipe</th><th>Saved</th><th></th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="editor">
+            <h3>Add a favourite</h3>
+            <form id="faves-form">
+              <div class="field-row">
+                <div><label for="faves-sub">Subscriber</label><select id="faves-sub" required></select></div>
+                <div><label for="faves-recipe">Recipe</label><select id="faves-recipe" required></select></div>
+              </div>
+              <div class="editor-actions">
+                <button class="btn" type="submit">Add favourite</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

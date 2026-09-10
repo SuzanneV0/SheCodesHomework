@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 
 Sitemap: https://she-codes-homework-blush.vercel.app/sitemap.xml
