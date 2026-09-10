@@ -161,6 +161,7 @@
       <p>Get one Halloween bake, one decorating tip, and one party menu in your inbox every October.</p>
 
       <form id="newsletter-form" novalidate>
+        <p class="form-error" id="newsletter-error" role="alert" hidden></p>
         <div class="form-field">
           <label for="newsletter-name">Name</label>
           <input type="text" id="newsletter-name" name="name" autocomplete="name" required />
@@ -173,11 +174,13 @@
       </form>
 
       <div class="form-success" id="newsletter-success" role="status" tabindex="-1" hidden>
-        Thanks! You're on the list — keep an eye on your inbox. 🧁
+        Thanks! You're on the list — your name and email are saved to the Spooky Bites
+        subscriber database. 🧁
       </div>
     </div>
   </div>
 
+  <script src="js/supabase.js"></script>
   <script src="js/countdown.js"></script>
   <script src="js/site.js"></script>
 </body>

@@ -158,9 +158,21 @@
   }
 
   if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      // No backend is wired up yet -- this just confirms the interaction locally.
+    var nameInput = document.getElementById("newsletter-name");
+    var emailInput = document.getElementById("newsletter-email");
+    var errorMsg = document.getElementById("newsletter-error");
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    function failNewsletter(text, field) {
+      if (errorMsg) {
+        errorMsg.textContent = text;
+        errorMsg.hidden = false;
+      }
+      if (field) field.focus();
+    }
+
+    function finishNewsletter() {
+      if (errorMsg) errorMsg.hidden = true;
       form.hidden = true;
       if (successMsg) {
         successMsg.hidden = false;
@@ -168,6 +180,46 @@
       } else if (closeBtn) {
         closeBtn.focus();
       }
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (errorMsg) errorMsg.hidden = true;
+
+      var name = nameInput ? nameInput.value.trim() : "";
+      var email = emailInput ? emailInput.value.trim() : "";
+
+      if (!name) return failNewsletter("Please enter your name.", nameInput);
+      if (!email || (emailInput && !emailInput.checkValidity())) {
+        return failNewsletter("Please enter a valid email address.", emailInput);
+      }
+
+      var db = window.SpookyBitesDB;
+      if (!db) {
+        // Opened as a local file with no network — just confirm locally.
+        finishNewsletter();
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Subscribing…";
+      }
+      db.subscribe(name, email)
+        .then(function () {
+          db.identity.set(name, email);
+          finishNewsletter();
+        })
+        .catch(function (err) {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Subscribe";
+          }
+          failNewsletter(
+            err.message || "Could not reach the server. Please try again.",
+            emailInput
+          );
+        });
     });
   }
 })();
