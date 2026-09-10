@@ -979,6 +979,85 @@ footer {
   color: var(--muted);
 }
 
+/* ---------- Favourite-a-recipe button ---------- */
+.fav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.fav-btn .fav-heart {
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--oxblood);
+}
+
+.fav-btn:hover {
+  color: var(--oxblood);
+  border-color: var(--oxblood);
+}
+
+.fav-btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.fav-btn[aria-pressed="true"] {
+  color: var(--oxblood);
+  border-color: var(--oxblood);
+  font-weight: 600;
+}
+
+.fav-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.item-card .fav-btn {
+  margin-top: 0.75rem;
+}
+
+.recipe-fav {
+  margin: 0 0 1.5rem;
+}
+
+.fav-bar {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.fav-bar[hidden] {
+  display: none;
+}
+
+.fav-switch {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.fav-switch:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
 /* ---------- Emoji tiles (stand in for recipe photos) ---------- */
 .emoji-tile {
   aspect-ratio: 1 / 1;
