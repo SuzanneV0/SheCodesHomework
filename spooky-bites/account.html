@@ -45,36 +45,84 @@
       <button class="btn" type="button" id="prompt-sign-in">Sign in</button>
     </div>
 
-    <form id="profile-form" class="profile-card" hidden novalidate>
-      <p class="form-error" id="profile-error" role="alert" hidden></p>
-      <p class="form-success" id="profile-success" role="status" hidden></p>
+    <div id="profile-content" hidden>
+      <form id="profile-form" class="profile-card" novalidate>
+        <p class="form-error" id="profile-error" role="alert" hidden></p>
+        <p class="form-success" id="profile-success" role="status" hidden></p>
 
-      <div class="avatar-row">
-        <img id="avatar-preview" class="avatar-preview" src="favicon.svg" alt="Your avatar" />
-        <div class="avatar-actions">
-          <button class="btn btn-secondary" type="button" id="avatar-pick">Change avatar</button>
-          <input type="file" id="avatar-input" accept="image/png,image/jpeg,image/webp,image/gif" />
-          <p class="avatar-hint">PNG, JPG, WebP or GIF, up to 2MB.</p>
+        <div class="avatar-row">
+          <img id="avatar-preview" class="avatar-preview" src="favicon.svg" alt="Your avatar" />
+          <div class="avatar-actions">
+            <button class="btn btn-secondary" type="button" id="avatar-pick">Change avatar</button>
+            <input type="file" id="avatar-input" accept="image/png,image/jpeg,image/webp,image/gif" />
+            <p class="avatar-hint">PNG, JPG, WebP or GIF, up to 2MB.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="form-field">
-        <label for="display-name">Display name</label>
-        <input type="text" id="display-name" maxlength="60" placeholder="e.g. Cass" />
-      </div>
+        <div class="form-field">
+          <label for="display-name">Display name</label>
+          <input type="text" id="display-name" maxlength="60" placeholder="e.g. Cass" />
+        </div>
 
-      <div class="form-field">
-        <label for="food-preference">What type of food do you prefer?</label>
-        <input type="text" id="food-preference" maxlength="80" placeholder="e.g. Sweet & sugary" />
-      </div>
+        <div class="form-field">
+          <label for="food-preference">What type of food do you prefer?</label>
+          <input type="text" id="food-preference" maxlength="80" placeholder="e.g. Sweet & sugary" />
+        </div>
 
-      <div class="form-field">
-        <label for="favourite-character">Favourite Halloween character</label>
-        <input type="text" id="favourite-character" maxlength="60" placeholder="e.g. The Headless Horseman" />
-      </div>
+        <div class="form-field">
+          <label for="favourite-character">Favourite Halloween character</label>
+          <input type="text" id="favourite-character" maxlength="60" placeholder="e.g. The Headless Horseman" />
+        </div>
 
-      <button class="btn" type="submit" id="profile-save" style="width:100%">Save changes</button>
-    </form>
+        <button class="btn" type="submit" id="profile-save" style="width:100%">Save changes</button>
+      </form>
+
+      <section class="profile-card">
+        <h2>My Favourites</h2>
+        <p class="section-hint">Recipes you've saved from the site.</p>
+        <p class="muted-note" id="fav-empty" hidden>You haven't saved any favourites yet.</p>
+        <ul class="simple-list" id="fav-list"></ul>
+      </section>
+
+      <section class="profile-card">
+        <h2>My Recipe Photos</h2>
+        <p class="section-hint">Made one of our recipes? Upload a photo and tag which one — it'll show up on that recipe's page too.</p>
+        <form id="photo-form" novalidate>
+          <p class="form-error" id="photo-error" role="alert" hidden></p>
+          <p class="form-success" id="photo-success" role="status" hidden></p>
+          <div class="form-field">
+            <label for="photo-recipe">Which recipe?</label>
+            <select id="photo-recipe" required></select>
+          </div>
+          <div class="form-field">
+            <label for="photo-file">Photo</label>
+            <input type="file" id="photo-file" accept="image/png,image/jpeg,image/webp,image/gif" required />
+            <p class="avatar-hint">PNG, JPG, WebP or GIF, up to 5MB.</p>
+          </div>
+          <button class="btn" type="submit" id="photo-submit" style="width:100%">Upload photo</button>
+        </form>
+        <ul class="photo-grid" id="photo-list"></ul>
+      </section>
+
+      <section class="profile-card">
+        <h2>My Recipes</h2>
+        <p class="section-hint">Share a recipe of your own — it'll appear right here on your profile.</p>
+        <form id="my-recipe-form" novalidate>
+          <p class="form-error" id="my-recipe-error" role="alert" hidden></p>
+          <p class="form-success" id="my-recipe-success" role="status" hidden></p>
+          <div class="form-field">
+            <label for="my-recipe-title">Title</label>
+            <input type="text" id="my-recipe-title" maxlength="80" required />
+          </div>
+          <div class="form-field">
+            <label for="my-recipe-body">Recipe</label>
+            <textarea id="my-recipe-body" rows="6" required placeholder="Ingredients, steps, tips — whatever you want to share."></textarea>
+          </div>
+          <button class="btn" type="submit" id="my-recipe-submit" style="width:100%">Add recipe</button>
+        </form>
+        <ul class="simple-list" id="my-recipe-list"></ul>
+      </section>
+    </div>
   </main>
 
   <footer>
