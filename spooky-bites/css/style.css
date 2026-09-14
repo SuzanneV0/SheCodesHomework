@@ -1588,6 +1588,7 @@ footer {
 .item-photo {
   aspect-ratio: 1 / 1;
   width: 100%;
+  height: auto;
   border-radius: 0.3rem;
   border: 1px solid var(--card-border);
   object-fit: cover;
@@ -1610,6 +1611,7 @@ footer {
 .article-photo {
   aspect-ratio: 16 / 9;
   width: 100%;
+  height: auto;
   border-radius: 0.3rem;
   border: 1px solid var(--card-border);
   object-fit: cover;
