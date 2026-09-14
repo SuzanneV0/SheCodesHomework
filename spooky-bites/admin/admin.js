@@ -75,6 +75,18 @@
     setAuthMode(state.mode === "signup" ? "signin" : "signup");
   });
 
+  $("auth-google").addEventListener("click", function () {
+    authMsg("");
+    db.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: window.location.origin + "/admin/" }
+    }).then(function (res) {
+      if (res.error) authMsg(res.error.message);
+      // success redirects the browser to Google, then back here —
+      // onAuthStateChange -> route() picks up the session on return.
+    });
+  });
+
   $("auth-form").addEventListener("submit", function (e) {
     e.preventDefault();
     authMsg("");
