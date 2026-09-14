@@ -106,16 +106,56 @@
     });
   });
 
+  var THEME_KEY = "spooky-bites-theme";
+  var THEME_DEFAULT_KEY = "spooky-bites-theme-account-default";
+  var profileLink = $("profile-link");
+  var settingsLink = $("settings-link");
+
+  function applyAccountThemeDefault(darkModeDefault) {
+    try {
+      if (darkModeDefault) localStorage.setItem(THEME_DEFAULT_KEY, "dark");
+      else localStorage.removeItem(THEME_DEFAULT_KEY);
+      // Only take effect live if this device has no explicit theme choice of its own.
+      if (darkModeDefault && !localStorage.getItem(THEME_KEY)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        var themeToggle = $("theme-toggle");
+        if (themeToggle) {
+          themeToggle.textContent = "☀️";
+          themeToggle.setAttribute("aria-label", "Switch to light mode");
+        }
+      }
+    } catch (e) {
+      /* storage unavailable — theme just won't carry over from the account */
+    }
+  }
+
+  function broadcast(session, profile) {
+    window.spookyBitesProfile = profile || null;
+    document.dispatchEvent(new CustomEvent("spookybites:auth", {
+      detail: { session: session, profile: profile || null }
+    }));
+  }
+
   function render(session) {
     if (session) {
       toggleBtn.setAttribute("data-signed-in", "true");
       toggleBtn.textContent = "Sign out";
       toggleBtn.setAttribute("aria-label", "Sign out of Spooky Bites");
-      db.rpc("ensure_profile"); // fire-and-forget: creates the profile row (role="user") if missing
+      if (profileLink) profileLink.hidden = false;
+      if (settingsLink) settingsLink.hidden = false;
+
+      db.rpc("ensure_profile").then(function (res) {
+        if (res.error) { broadcast(session, null); return; }
+        applyAccountThemeDefault(res.data && res.data.dark_mode_default);
+        broadcast(session, res.data);
+      });
     } else {
       toggleBtn.setAttribute("data-signed-in", "false");
       toggleBtn.textContent = "Sign in";
       toggleBtn.setAttribute("aria-label", "Sign in to Spooky Bites");
+      if (profileLink) profileLink.hidden = true;
+      if (settingsLink) settingsLink.hidden = true;
+      broadcast(null, null);
     }
   }
 

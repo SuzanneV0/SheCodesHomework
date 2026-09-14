@@ -29,7 +29,9 @@
 
   var saved = null;
   try {
-    saved = localStorage.getItem(STORAGE_KEY);
+    // An explicit choice on this device wins; otherwise fall back to the
+    // signed-in account's default (cached by account.js), then system.
+    saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem("spooky-bites-theme-account-default");
   } catch (e) {
     /* storage unavailable, fall back to system preference */
   }
