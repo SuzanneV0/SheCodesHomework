@@ -301,6 +301,19 @@ img {
   white-space: nowrap;
 }
 
+/* A pumpkin with a bite taken out, standing in for the "o"s in "Spooky".
+   Drawn as a background image so the bite is a real transparent cutout —
+   it reads correctly on any background, light or dark mode included. */
+.pumpkin-o {
+  display: inline-block;
+  width: 0.72em;
+  height: 0.72em;
+  vertical-align: -0.06em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cmask id='b'%3E%3Crect width='24' height='24' fill='white'/%3E%3Ccircle cx='18.5' cy='8' r='5.2' fill='black'/%3E%3C/mask%3E%3Crect x='10.4' y='1' width='3.2' height='4.5' rx='1.2' fill='%235b7a4a'/%3E%3Cg mask='url(%23b)'%3E%3Ccircle cx='12' cy='14' r='9' fill='%23e8791c'/%3E%3Cpath d='M12 5 V23' stroke='%23c25f10' stroke-width='1.2' opacity='0.55'/%3E%3Cpath d='M7.3 6 Q6.3 14 8 22' stroke='%23c25f10' stroke-width='1' fill='none' opacity='0.45'/%3E%3Cpath d='M16.7 6 Q17.7 14 16 22' stroke='%23c25f10' stroke-width='1' fill='none' opacity='0.45'/%3E%3C/g%3E%3C/svg%3E");
+}
+
 .nav-links {
   list-style: none;
   display: flex;
