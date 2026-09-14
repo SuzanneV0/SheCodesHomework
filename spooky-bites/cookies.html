@@ -14,10 +14,12 @@
   <meta property="og:title" content="Cookie Policy · Spooky Bites" />
   <meta property="og:description" content="Spooky Bites' cookie policy — spoiler: the only cookies here are the edible kind." />
   <meta property="og:url" content="https://she-codes-homework-blush.vercel.app/cookies.html" />
+  <meta property="og:image" content="https://she-codes-homework-blush.vercel.app/img/social-preview.jpg" />
 
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cookie Policy · Spooky Bites" />
   <meta name="twitter:description" content="Spooky Bites' cookie policy — spoiler: the only cookies here are the edible kind." />
+  <meta name="twitter:image" content="https://she-codes-homework-blush.vercel.app/img/social-preview.jpg" />
 
   <link rel="icon" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,6 +40,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="quiz.html">Quiz</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
       </ul>
       <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">☰</button>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
@@ -46,6 +49,34 @@
       <button id="account-toggle" class="account-toggle" type="button" data-signed-in="false" aria-label="Sign in to Spooky Bites">Sign in</button>
     </div>
   </nav>
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li aria-current="page">Cookie Policy</li>
+    </ol>
+  </nav>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://she-codes-homework-blush.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Cookie Policy",
+      "item": "https://she-codes-homework-blush.vercel.app/cookies.html"
+    }
+  ]
+}
+  </script>
 
   <header class="page-hero">
     <h1>Cookie Policy</h1>
@@ -116,6 +147,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="quiz.html">Quiz</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
       </ul>
       <ul class="footer-legal" role="list">
         <li><a href="terms.html">Terms of Use</a></li>

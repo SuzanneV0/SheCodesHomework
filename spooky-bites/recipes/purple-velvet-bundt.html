@@ -14,10 +14,12 @@
   <meta property="og:title" content="Purple Velvet Bundt · Spooky Bites" />
   <meta property="og:description" content="A deep-violet take on red velvet, baked as a bundt with a marigold cream-cheese glaze." />
   <meta property="og:url" content="https://she-codes-homework-blush.vercel.app/recipes/purple-velvet-bundt.html" />
+  <meta property="og:image" content="https://she-codes-homework-blush.vercel.app/img/recipes/purple-velvet-bundt.jpeg" />
 
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Purple Velvet Bundt · Spooky Bites" />
   <meta name="twitter:description" content="A deep-violet take on red velvet, baked as a bundt with a marigold cream-cheese glaze." />
+  <meta name="twitter:image" content="https://she-codes-homework-blush.vercel.app/img/recipes/purple-velvet-bundt.jpeg" />
 
   <link rel="icon" href="../favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,6 +40,7 @@
         <li><a href="../about.html">About</a></li>
         <li><a href="../quiz.html">Quiz</a></li>
         <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
       </ul>
       <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">☰</button>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
@@ -46,6 +49,106 @@
       <button id="account-toggle" class="account-toggle" type="button" data-signed-in="false" aria-label="Sign in to Spooky Bites">Sign in</button>
     </div>
   </nav>
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../recipes.html">Recipes</a></li>
+      <li aria-current="page">Purple Velvet Bundt</li>
+    </ol>
+  </nav>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://she-codes-homework-blush.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Recipes",
+      "item": "https://she-codes-homework-blush.vercel.app/recipes.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Purple Velvet Bundt",
+      "item": "https://she-codes-homework-blush.vercel.app/recipes/purple-velvet-bundt.html"
+    }
+  ]
+}
+  </script>
+
+  <script type="application/ld+json" id="recipe-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "@id": "recipe-schema",
+  "name": "Purple Velvet Bundt",
+  "image": [
+    "https://she-codes-homework-blush.vercel.app/img/recipes/purple-velvet-bundt.jpeg"
+  ],
+  "description": "A deep-violet take on red velvet, baked as a bundt with a marigold cream-cheese glaze.",
+  "recipeCategory": "Cake",
+  "author": {
+    "@type": "Organization",
+    "name": "Spooky Bites"
+  },
+  "recipeIngredient": [
+    "340 g plain flour",
+    "2 tbsp cocoa powder",
+    "1 1/2 tsp baking soda",
+    "1 tsp salt",
+    "340 g caster sugar",
+    "240 ml neutral oil",
+    "2 large eggs plus 1 yolk, room temperature",
+    "240 ml buttermilk, room temperature",
+    "2 tsp clear vanilla extract",
+    "1 tbsp white vinegar",
+    "Blue-violet gel food colouring (about 1 1/2 tsp, to taste)",
+    "115 g cream cheese, softened",
+    "120 g icing sugar",
+    "2\u20133 tbsp milk",
+    "Pinch of saffron steeped in 1 tbsp warm milk, or a few drops yellow gel"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToStep",
+      "text": "Heat the oven to 175\u00b0C (fan 160\u00b0C). Grease and flour a 10-cup bundt tin thoroughly, getting into every groove."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Whisk the flour, cocoa, baking soda, and salt in a bowl."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "In a large bowl, whisk the sugar, oil, eggs, and yolk until smooth, then whisk in the buttermilk, vanilla, and enough gel colour to make it a shade darker than you want the finished cake."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Add the dry ingredients and stir just until combined. Stir the vinegar in last \u2014 the batter will lighten slightly as it reacts. Do not overmix."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Pour into the tin, tap it on the counter to release air bubbles, and bake 45\u201350 minutes, until a skewer comes out clean."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Cool in the tin 15 minutes, then turn out onto a rack to cool completely. Glazing a warm cake makes the glaze slide off."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Beat the glaze ingredients together, adding milk a little at a time until it ribbons thickly off the spoon. Pour over the cooled cake so it pools in the ridges and drips down the sides."
+    }
+  ]
+}
+  </script>
 
   <header class="page-hero">
     <h1>Purple Velvet Bundt</h1>
@@ -112,6 +215,38 @@
       </p>
     </article>
 
+    <section id="reviews-section" class="page-article" data-recipe-slug="purple-velvet-bundt">
+      <h2>Ratings &amp; Reviews</h2>
+      <p id="reviews-summary" class="muted-note">No ratings yet — be the first.</p>
+      <ul id="reviews-list" class="simple-list"></ul>
+
+      <div id="review-signed-out" class="review-prompt">
+        <p>Sign in to rate this recipe.</p>
+        <button class="btn btn-secondary" type="button" id="review-signin-btn">Sign in</button>
+      </div>
+
+      <form id="review-form" class="review-form" hidden novalidate>
+        <p class="form-error" id="review-error" role="alert" hidden></p>
+        <p class="form-success" id="review-success" role="status" hidden></p>
+        <fieldset class="star-input">
+          <legend>Your rating</legend>
+          <div class="star-buttons" id="star-buttons">
+            <button type="button" class="star-btn" data-star="1" aria-label="1 star">★</button>
+            <button type="button" class="star-btn" data-star="2" aria-label="2 stars">★</button>
+            <button type="button" class="star-btn" data-star="3" aria-label="3 stars">★</button>
+            <button type="button" class="star-btn" data-star="4" aria-label="4 stars">★</button>
+            <button type="button" class="star-btn" data-star="5" aria-label="5 stars">★</button>
+          </div>
+          <input type="hidden" id="review-rating" value="0" />
+        </fieldset>
+        <div class="form-field">
+          <label for="review-body">Your review (optional)</label>
+          <textarea id="review-body" rows="3" placeholder="What did you think?"></textarea>
+        </div>
+        <button class="btn" type="submit" id="review-submit" style="width:100%">Submit rating</button>
+      </form>
+    </section>
+
     <section id="reader-gallery" class="page-article" data-recipe-slug="purple-velvet-bundt">
       <h2>Reader Photos</h2>
       <p class="reader-gallery-empty muted-note">No one has shared a photo of this bake yet — be the first from your <a href="../account.html">profile page</a>.</p>
@@ -129,6 +264,7 @@
         <li><a href="../about.html">About</a></li>
         <li><a href="../quiz.html">Quiz</a></li>
         <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
       </ul>
       <ul class="footer-legal" role="list">
         <li><a href="../terms.html">Terms of Use</a></li>
@@ -183,5 +319,6 @@
   <script src="../js/account.js"></script>
   <script src="../js/favourites.js"></script>
   <script src="../js/recipe-gallery.js"></script>
+  <script src="../js/reviews.js"></script>
 </body>
 </html>

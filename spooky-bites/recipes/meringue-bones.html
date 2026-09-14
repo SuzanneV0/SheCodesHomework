@@ -14,10 +14,12 @@
   <meta property="og:title" content="Meringue Bones · Spooky Bites" />
   <meta property="og:description" content="Crisp piped meringue bones, baked low and slow and dusted with cocoa for an unearthed look." />
   <meta property="og:url" content="https://she-codes-homework-blush.vercel.app/recipes/meringue-bones.html" />
+  <meta property="og:image" content="https://she-codes-homework-blush.vercel.app/img/recipes/meringue-bones.jpg" />
 
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Meringue Bones · Spooky Bites" />
   <meta name="twitter:description" content="Crisp piped meringue bones, baked low and slow and dusted with cocoa for an unearthed look." />
+  <meta name="twitter:image" content="https://she-codes-homework-blush.vercel.app/img/recipes/meringue-bones.jpg" />
 
   <link rel="icon" href="../favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,6 +40,7 @@
         <li><a href="../about.html">About</a></li>
         <li><a href="../quiz.html">Quiz</a></li>
         <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
       </ul>
       <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">☰</button>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
@@ -46,6 +49,101 @@
       <button id="account-toggle" class="account-toggle" type="button" data-signed-in="false" aria-label="Sign in to Spooky Bites">Sign in</button>
     </div>
   </nav>
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../recipes.html">Recipes</a></li>
+      <li aria-current="page">Meringue Bones</li>
+    </ol>
+  </nav>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://she-codes-homework-blush.vercel.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Recipes",
+      "item": "https://she-codes-homework-blush.vercel.app/recipes.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Meringue Bones",
+      "item": "https://she-codes-homework-blush.vercel.app/recipes/meringue-bones.html"
+    }
+  ]
+}
+  </script>
+
+  <script type="application/ld+json" id="recipe-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "@id": "recipe-schema",
+  "name": "Meringue Bones",
+  "image": [
+    "https://she-codes-homework-blush.vercel.app/img/recipes/meringue-bones.jpg"
+  ],
+  "description": "Crisp piped meringue bones, baked low and slow and dusted with cocoa for an unearthed look.",
+  "recipeCategory": "Cookies",
+  "author": {
+    "@type": "Organization",
+    "name": "Spooky Bites"
+  },
+  "recipeIngredient": [
+    "3 large egg whites, at room temperature",
+    "1/4 tsp cream of tartar",
+    "150 g caster sugar",
+    "1/2 tsp vanilla extract",
+    "Pinch of salt",
+    "1 tsp cocoa powder, for dusting"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToStep",
+      "text": "Heat the oven to 100\u00b0C (fan 90\u00b0C) and line two baking sheets with parchment. Fit a piping bag with a plain round tip about 1 cm wide."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Wipe the mixing bowl and whisk with a little lemon juice or vinegar to remove any grease, then dry."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Whisk the egg whites with the salt and cream of tartar on medium until foamy, then to soft peaks."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Add the sugar a tablespoon at a time, whisking well between additions. Once it is all in, whip on high until the meringue is stiff, glossy, and no longer feels gritty when rubbed between two fingers. Whisk in the vanilla."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Pipe bones: a 6\u20137 cm bar, then a small double blob on each end. Space them 2 cm apart."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Bake 1 hour 15 minutes without opening the door. They are done when they lift cleanly off the parchment and sound hollow."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Turn the oven off and leave the bones inside with the door ajar until completely cool."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Dust lightly with cocoa powder through a fine sieve for a \"dug up\" look."
+    }
+  ]
+}
+  </script>
 
   <header class="page-hero">
     <h1>Meringue Bones</h1>
@@ -99,6 +197,38 @@
       </p>
     </article>
 
+    <section id="reviews-section" class="page-article" data-recipe-slug="meringue-bones">
+      <h2>Ratings &amp; Reviews</h2>
+      <p id="reviews-summary" class="muted-note">No ratings yet — be the first.</p>
+      <ul id="reviews-list" class="simple-list"></ul>
+
+      <div id="review-signed-out" class="review-prompt">
+        <p>Sign in to rate this recipe.</p>
+        <button class="btn btn-secondary" type="button" id="review-signin-btn">Sign in</button>
+      </div>
+
+      <form id="review-form" class="review-form" hidden novalidate>
+        <p class="form-error" id="review-error" role="alert" hidden></p>
+        <p class="form-success" id="review-success" role="status" hidden></p>
+        <fieldset class="star-input">
+          <legend>Your rating</legend>
+          <div class="star-buttons" id="star-buttons">
+            <button type="button" class="star-btn" data-star="1" aria-label="1 star">★</button>
+            <button type="button" class="star-btn" data-star="2" aria-label="2 stars">★</button>
+            <button type="button" class="star-btn" data-star="3" aria-label="3 stars">★</button>
+            <button type="button" class="star-btn" data-star="4" aria-label="4 stars">★</button>
+            <button type="button" class="star-btn" data-star="5" aria-label="5 stars">★</button>
+          </div>
+          <input type="hidden" id="review-rating" value="0" />
+        </fieldset>
+        <div class="form-field">
+          <label for="review-body">Your review (optional)</label>
+          <textarea id="review-body" rows="3" placeholder="What did you think?"></textarea>
+        </div>
+        <button class="btn" type="submit" id="review-submit" style="width:100%">Submit rating</button>
+      </form>
+    </section>
+
     <section id="reader-gallery" class="page-article" data-recipe-slug="meringue-bones">
       <h2>Reader Photos</h2>
       <p class="reader-gallery-empty muted-note">No one has shared a photo of this bake yet — be the first from your <a href="../account.html">profile page</a>.</p>
@@ -116,6 +246,7 @@
         <li><a href="../about.html">About</a></li>
         <li><a href="../quiz.html">Quiz</a></li>
         <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
       </ul>
       <ul class="footer-legal" role="list">
         <li><a href="../terms.html">Terms of Use</a></li>
@@ -170,5 +301,6 @@
   <script src="../js/account.js"></script>
   <script src="../js/favourites.js"></script>
   <script src="../js/recipe-gallery.js"></script>
+  <script src="../js/reviews.js"></script>
 </body>
 </html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ · Spooky Bites</title>
+  <meta name="description" content="Answers to common questions about Spooky Bites — accounts, favourites, your own recipes and photos, and how the site handles your data." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#241019" />
+  <link rel="canonical" href="https://she-codes-homework-blush.vercel.app/faq.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Spooky Bites" />
+  <meta property="og:title" content="FAQ · Spooky Bites" />
+  <meta property="og:description" content="Answers to common questions about Spooky Bites — accounts, favourites, your own recipes and photos, and how the site handles your data." />
+  <meta property="og:url" content="https://she-codes-homework-blush.vercel.app/faq.html" />
+  <meta property="og:image" content="https://she-codes-homework-blush.vercel.app/img/social-preview.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FAQ · Spooky Bites" />
+  <meta name="twitter:description" content="Answers to common questions about Spooky Bites — accounts, favourites, your own recipes and photos, and how the site handles your data." />
+  <meta name="twitter:image" content="https://she-codes-homework-blush.vercel.app/img/social-preview.jpg" />
+
+  <link rel="icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Ysabeau:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html"><span aria-hidden="true">🧁</span> Spooky Bites</a>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="techniques.html">Techniques</a></li>
+        <li><a href="menu-planner.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">☰</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
+      <a href="account.html" id="profile-link" class="account-toggle" hidden>My Profile</a>
+      <a href="settings.html" id="settings-link" class="account-toggle" hidden>Settings</a>
+      <button id="account-toggle" class="account-toggle" type="button" data-signed-in="false" aria-label="Sign in to Spooky Bites">Sign in</button>
+    </div>
+  </nav>
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li aria-current="page">FAQ</li>
+    </ol>
+  </nav>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need an account to use Spooky Bites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Every recipe, the quiz, and the menu planner work without signing in. An account only adds a few extras: your favourites follow you across devices, and you get a profile page to add your own recipes and tag photos of the ones you've made."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my favourites if I don't sign in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They're saved in that browser only, using localStorage. Sign in and they'll move to your account instead, so they show up wherever you're signed in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I sign in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Click \"Sign in\" in the navigation, then either continue with Google or create an account with an email and password."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add my own recipe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Sign in and open My Profile — there's a \"My Recipes\" section with a simple text box for a title and the recipe itself, which appears right there on your profile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I share a photo of a recipe I made?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. From My Profile, upload a photo and tag which official recipe it's of. It'll show up in a reader-photo gallery on that recipe's own page, as well as on your profile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do ratings and reviews work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sign in on a recipe page to leave a star rating and, if you like, a short review. You can leave one rating per recipe, and you're welcome to update it later."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the newsletter actually send emails?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — the newsletter signup and the \"notify me about new recipes\" setting are both demos. Nothing is emailed; Spooky Bites is a student project without real email sending."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The site sets no cookies and runs no analytics. See the Privacy Policy and Cookie Policy pages for the full details on what an account stores and why."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I found a bug, or I have a recipe idea to suggest — what do I do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Get in touch through the Contact page."
+      }
+    }
+  ]
+}
+  </script>
+
+  <header class="page-hero">
+    <h1>Frequently Asked Questions</h1>
+    <p>Accounts, favourites, your own recipes, and the odd bit of fine print.</p>
+  </header>
+
+  <main id="main" tabindex="-1" class="page-content container">
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do I need an account to use Spooky Bites?</summary>
+        <p>No. Every recipe, the quiz, and the menu planner work without signing in. An account only
+        adds a few extras: your favourites follow you across devices, and you get a
+        <a href="account.html">profile page</a> to add your own recipes and tag photos of the ones
+        you've made.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens to my favourites if I don't sign in?</summary>
+        <p>They're saved in that browser only, using <code>localStorage</code>. Sign in and they'll
+        move to your account instead, so they show up wherever you're signed in.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I sign in?</summary>
+        <p>Click "Sign in" in the navigation, then either continue with Google or create an account
+        with an email and password.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I add my own recipe?</summary>
+        <p>Yes. Sign in and open <a href="account.html">My Profile</a> — there's a "My Recipes"
+        section with a simple text box for a title and the recipe itself, which appears right there
+        on your profile.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I share a photo of a recipe I made?</summary>
+        <p>Yes. From <a href="account.html">My Profile</a>, upload a photo and tag which official
+        recipe it's of. It'll show up in a reader-photo gallery on that recipe's own page, as well as
+        on your profile.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do ratings and reviews work?</summary>
+        <p>Sign in on a recipe page to leave a star rating and, if you like, a short review. You can
+        leave one rating per recipe, and you're welcome to update it later.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does the newsletter actually send emails?</summary>
+        <p>No — the newsletter signup and the "notify me about new recipes" setting are both demos.
+        Nothing is emailed; Spooky Bites is a student project without real email sending.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is my data private?</summary>
+        <p>The site sets no cookies and runs no analytics. See the
+        <a href="privacy.html">Privacy Policy</a> and <a href="cookies.html">Cookie Policy</a> pages
+        for the full details on what an account stores and why.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>I found a bug, or I have a recipe idea to suggest — what do I do?</summary>
+        <p>Get in touch through the <a href="contact.html">Contact page</a>.</p>
+      </details>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <ul class="footer-nav" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="techniques.html">Techniques</a></li>
+        <li><a href="menu-planner.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <ul class="footer-legal" role="list">
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+      </ul>
+      <p class="footer-copyright">&copy; 2026 Spooky Bites. Baked with <span aria-hidden="true">🧡</span> for Halloween.</p>
+    </div>
+  </footer>
+
+  <!-- Account sign-in modal -->
+  <div class="modal-overlay" id="account-modal" role="dialog" aria-modal="true" aria-labelledby="account-heading" hidden>
+    <div class="modal-box">
+      <button class="modal-close" id="account-close" type="button" aria-label="Close sign in">✕</button>
+      <h2 id="account-heading">Sign in to Spooky Bites</h2>
+      <p>Save your favourite recipes to your account and find them on any device.</p>
+
+      <button class="btn btn-secondary" type="button" id="account-google" style="width:100%">
+        <svg width="16" height="16" viewBox="0 0 18 18" aria-hidden="true" style="vertical-align:-3px;margin-right:0.4rem;">
+          <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9c1.7-1.57 2.7-3.88 2.7-6.62z"/>
+          <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.26c-.8.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.96v2.33A9 9 0 0 0 9 18z"/>
+          <path fill="#FBBC05" d="M3.95 10.7A5.4 5.4 0 0 1 3.67 9c0-.59.1-1.17.28-1.7V4.97H.96A9 9 0 0 0 0 9c0 1.45.35 2.83.96 4.03l2.99-2.33z"/>
+          <path fill="#EA4335" d="M9 3.58c1.32 0 2.51.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.97l2.99 2.33C4.66 5.17 6.65 3.58 9 3.58z"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="auth-divider"><span>or</span></div>
+
+      <form id="account-form" novalidate>
+        <p class="form-error" id="account-error" role="alert" hidden></p>
+        <div class="form-field">
+          <label for="account-email">Email</label>
+          <input type="email" id="account-email" autocomplete="email" required />
+        </div>
+        <div class="form-field">
+          <label for="account-password">Password</label>
+          <input type="password" id="account-password" autocomplete="current-password" required minlength="6" />
+        </div>
+        <button class="btn" type="submit" id="account-submit" style="width:100%">Sign in</button>
+      </form>
+
+      <p class="toggle">
+        <span id="account-mode-text">New here?</span>
+        <button type="button" id="account-mode-toggle">Create an account</button>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

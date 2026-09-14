@@ -409,6 +409,96 @@ img {
   padding: 0;
 }
 
+/* ---------- Breadcrumbs ---------- */
+.breadcrumbs {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.breadcrumbs li + li::before {
+  content: "›";
+  color: var(--gold);
+}
+
+.breadcrumbs a {
+  color: var(--muted);
+}
+
+.breadcrumbs a:hover,
+.breadcrumbs a:focus-visible {
+  color: var(--gold);
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: var(--text);
+}
+
+/* ---------- FAQ ---------- */
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.35rem;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::before {
+  content: "+";
+  color: var(--gold);
+  margin-right: 0.6rem;
+  font-weight: 700;
+}
+
+.faq-item[open] summary::before {
+  content: "–";
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+.faq-item p {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  padding-left: 1.4rem;
+}
+
 /* ---------- Account / settings pages ---------- */
 .profile-card {
   background: var(--card-bg);
@@ -618,6 +708,56 @@ img {
 .photo-grid .list-remove {
   display: block;
   margin: 0.2rem auto 0;
+}
+
+/* ---------- Recipe page: ratings & reviews ---------- */
+.stars-static {
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+.star-input {
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.star-input legend {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+  padding: 0;
+}
+
+.star-buttons {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--card-border);
+  cursor: pointer;
+  padding: 0.1rem;
+}
+
+.star-btn.on {
+  color: var(--gold);
+}
+
+.star-btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.review-prompt {
+  text-align: center;
+  padding: 1rem 0;
 }
 
 /* ---------- Recipe page: reader photo gallery ---------- */
