@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://she-codes-homework-blush.vercel.app/</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://she-codes-homework-blush.vercel.app/recipes.html</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://she-codes-homework-blush.vercel.app/recipes/graveyard-dirt-cake.html</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://she-codes-homework-blush.vercel.app/recipes/meringue-bones.html</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://she-codes-homework-blush.vercel.app/recipes/purple-velvet-bundt.html</loc><lastmod>2026-08-31</lastmod></url>
-  <url><loc>https://she-codes-homework-blush.vercel.app/techniques.html</loc><lastmod>2026-08-31</lastmod></url>
+  <url>
+    <loc>https://she-codes-homework-blush.vercel.app/recipes.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/graveyard-dirt-cake.jpg</image:loc><image:title>Graveyard Dirt Cake</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/meringue-bones.jpg</image:loc><image:title>Meringue Bones</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/purple-velvet-bundt.jpeg</image:loc><image:title>Purple Velvet Bundt</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/marigold-pan-de-muerto.jpg</image:loc><image:title>Marigold Pan de Muerto</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/spiderweb-brownies.jpg</image:loc><image:title>Spiderweb Brownies</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/monster-eye-cupcakes.jpg</image:loc><image:title>Monster Eye Cupcakes</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/pumpkin-spice-cinnamon-rolls.jpg</image:loc><image:title>Pumpkin Spice Cinnamon Rolls</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/jack-o-lantern-sugar-cookies.jpeg</image:loc><image:title>Jack-o'-Lantern Sugar Cookies</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/candy-corn-blondies.jpg</image:loc><image:title>Candy Corn Blondies</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/mummy-cake-pops.jpg</image:loc><image:title>Mummy Cake Pops</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://she-codes-homework-blush.vercel.app/recipes/graveyard-dirt-cake.html</loc>
+    <lastmod>2026-08-31</lastmod>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/graveyard-dirt-cake.jpg</image:loc><image:title>Graveyard Dirt Cake</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://she-codes-homework-blush.vercel.app/recipes/meringue-bones.html</loc>
+    <lastmod>2026-08-31</lastmod>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/meringue-bones.jpg</image:loc><image:title>Meringue Bones</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://she-codes-homework-blush.vercel.app/recipes/purple-velvet-bundt.html</loc>
+    <lastmod>2026-08-31</lastmod>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/recipes/purple-velvet-bundt.jpeg</image:loc><image:title>Purple Velvet Bundt</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://she-codes-homework-blush.vercel.app/techniques.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/social-preview.jpg</image:loc><image:title>Royal-icing decorated Halloween heart cookie</image:title></image:image>
+    <image:image><image:loc>https://she-codes-homework-blush.vercel.app/img/techniques/cupcake-technique.jpg</image:loc><image:title>Make-ahead Halloween cupcakes</image:title></image:image>
+  </url>
   <url><loc>https://she-codes-homework-blush.vercel.app/menu-planner.html</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://she-codes-homework-blush.vercel.app/about.html</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://she-codes-homework-blush.vercel.app/quiz.html</loc><lastmod>2026-08-31</lastmod></url>
