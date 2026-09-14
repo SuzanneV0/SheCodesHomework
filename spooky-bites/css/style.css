@@ -1607,6 +1607,15 @@ footer {
   font-size: 3rem;
 }
 
+.article-photo {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 0.3rem;
+  border: 1px solid var(--card-border);
+  object-fit: cover;
+  display: block;
+}
+
 @media (max-width: 640px) {
   .emoji-tile {
     font-size: 2rem;
