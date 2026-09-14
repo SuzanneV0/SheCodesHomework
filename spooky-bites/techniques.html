@@ -24,6 +24,8 @@
   <link rel="icon" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://itwsbzoampkxwdmtwvoo.supabase.co" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Ysabeau:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -86,7 +88,7 @@
   <main id="main" tabindex="-1" class="page-content container">
     <article class="page-article">
       <figure class="article-figure">
-        <img class="article-photo" src="img/social-preview.jpg" width="1200" height="628" alt="A royal-icing decorated Halloween heart cookie reading 'Happy Halloween', piped in smooth flood icing" loading="lazy" />
+        <img class="article-photo" src="img/social-preview.jpg" width="1200" height="628" alt="A royal-icing decorated Halloween heart cookie reading 'Happy Halloween', piped in smooth flood icing" fetchpriority="high" />
         <figcaption>Most Halloween decorating comes down to icing consistency and patience.</figcaption>
       </figure>
 
@@ -249,8 +251,8 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-  <script src="js/site.js"></script>
-  <script src="js/account.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/account.js" defer></script>
 </body>
 </html>

@@ -24,6 +24,8 @@
   <link rel="icon" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://itwsbzoampkxwdmtwvoo.supabase.co" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Ysabeau:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -114,7 +116,7 @@
     </form>
 
     <ol class="item-list" style="list-style: none;" role="list">
-      <li class="item-card" data-category="No-bake" data-difficulty="Easy"><img class="item-photo" src="img/recipes/graveyard-dirt-cake.jpg" width="800" height="533" alt="Graveyard dirt cake" loading="lazy" /><div><p class="item-rank">#1</p><h3>Graveyard Dirt Cake</h3><p>Layers of chocolate pudding and crushed cookie "dirt" in a pan, with cookie tombstones and gummy worms on top.</p><p class="item-more"><a href="recipes/graveyard-dirt-cake.html">Full recipe &rarr;</a></p><p class="recipe-fav"><button class="fav-btn" type="button" data-fav-slug="graveyard-dirt-cake" aria-pressed="false"><span class="fav-heart" aria-hidden="true">♡</span><span class="fav-btn-text">Save to my favourites</span></button></p></div></li>
+      <li class="item-card" data-category="No-bake" data-difficulty="Easy"><img class="item-photo" src="img/recipes/graveyard-dirt-cake.jpg" width="800" height="533" alt="Graveyard dirt cake" fetchpriority="high" /><div><p class="item-rank">#1</p><h3>Graveyard Dirt Cake</h3><p>Layers of chocolate pudding and crushed cookie "dirt" in a pan, with cookie tombstones and gummy worms on top.</p><p class="item-more"><a href="recipes/graveyard-dirt-cake.html">Full recipe &rarr;</a></p><p class="recipe-fav"><button class="fav-btn" type="button" data-fav-slug="graveyard-dirt-cake" aria-pressed="false"><span class="fav-heart" aria-hidden="true">♡</span><span class="fav-btn-text">Save to my favourites</span></button></p></div></li>
       <li class="item-card" data-category="Cookies" data-difficulty="Medium"><img class="item-photo" src="img/recipes/meringue-bones.jpg" width="800" height="600" alt="Meringue bones" loading="lazy" /><div><p class="item-rank">#2</p><h3>Meringue Bones</h3><p>Piped meringue in little dog-bone shapes, baked low and slow until crisp. Dust with cocoa for an unearthed look.</p><p class="item-more"><a href="recipes/meringue-bones.html">Full recipe &rarr;</a></p><p class="recipe-fav"><button class="fav-btn" type="button" data-fav-slug="meringue-bones" aria-pressed="false"><span class="fav-heart" aria-hidden="true">♡</span><span class="fav-btn-text">Save to my favourites</span></button></p></div></li>
       <li class="item-card" data-category="Cake" data-difficulty="Medium"><img class="item-photo" src="img/recipes/purple-velvet-bundt.jpeg" width="554" height="554" alt="Purple velvet bundt" loading="lazy" /><div><p class="item-rank">#3</p><h3>Purple Velvet Bundt</h3><p>Red-velvet method, swapped to a deep violet, with a marigold cream-cheese glaze dripping down the ridges.</p><p class="item-more"><a href="recipes/purple-velvet-bundt.html">Full recipe &rarr;</a></p><p class="recipe-fav"><button class="fav-btn" type="button" data-fav-slug="purple-velvet-bundt" aria-pressed="false"><span class="fav-heart" aria-hidden="true">♡</span><span class="fav-btn-text">Save to my favourites</span></button></p></div></li>
       <li class="item-card" data-category="Bread" data-difficulty="Medium"><img class="item-photo" src="img/recipes/marigold-pan-de-muerto.jpg" width="533" height="800" alt="Marigold pan de muerto" loading="lazy" /><div><p class="item-rank">#4</p><h3>Marigold Pan de Muerto</h3><p>Orange-blossom sweet bread with a bone-shaped crust and a saffron-marigold sugar coating.</p><p class="recipe-fav"><button class="fav-btn" type="button" data-fav-slug="marigold-pan-de-muerto" aria-pressed="false"><span class="fav-heart" aria-hidden="true">♡</span><span class="fav-btn-text">Save to my favourites</span></button></p></div></li>
@@ -188,10 +190,10 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-  <script src="js/site.js"></script>
-  <script src="js/recipe-filter.js"></script>
-  <script src="js/account.js"></script>
-  <script src="js/favourites.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/recipe-filter.js" defer></script>
+  <script src="js/account.js" defer></script>
+  <script src="js/favourites.js" defer></script>
 </body>
 </html>

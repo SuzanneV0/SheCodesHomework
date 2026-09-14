@@ -24,6 +24,8 @@
   <link rel="icon" href="../favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://itwsbzoampkxwdmtwvoo.supabase.co" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Ysabeau:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
@@ -161,7 +163,7 @@
         <span>📊 Easy &middot; no oven</span>
       </div>
 
-      <img class="article-photo" src="../img/recipes/graveyard-dirt-cake.jpg" width="800" height="533" alt="Graveyard Dirt Cake: layered chocolate pudding and cookie crumb &quot;dirt&quot; topped with cookie tombstones and gummy worms" loading="lazy" />
+      <img class="article-photo" src="../img/recipes/graveyard-dirt-cake.jpg" width="800" height="533" alt="Graveyard Dirt Cake: layered chocolate pudding and cookie crumb &quot;dirt&quot; topped with cookie tombstones and gummy worms" fetchpriority="high" />
 
       <p>
         Dirt cake is really a trifle in disguise: layers of cream-cheese-lightened chocolate
@@ -300,11 +302,11 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-  <script src="../js/site.js"></script>
-  <script src="../js/account.js"></script>
-  <script src="../js/favourites.js"></script>
-  <script src="../js/recipe-gallery.js"></script>
-  <script src="../js/reviews.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
+  <script src="../js/site.js" defer></script>
+  <script src="../js/account.js" defer></script>
+  <script src="../js/favourites.js" defer></script>
+  <script src="../js/recipe-gallery.js" defer></script>
+  <script src="../js/reviews.js" defer></script>
 </body>
 </html>
