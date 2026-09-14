@@ -1,7 +1,8 @@
 // "Save to favourites" toggle, present wherever a [data-fav-slug] button is.
-// Signed-out visitors get a plain localStorage list, same as before.
-// Signed-in visitors (see account.js) get it synced to their own account
-// via Supabase, so it follows them across devices.
+// Signed-out visitors are prompted to sign in (see account.js); the recipe
+// they clicked is then saved to their account automatically once they do.
+// Signed-in visitors get favourites synced to their account via Supabase,
+// so they follow them across devices.
 (function () {
   "use strict";
 
@@ -53,7 +54,8 @@
     });
   }
 
-  /* ---- signed-out: localStorage only (original behaviour) ---- */
+  /* ---- signed-out: localStorage only (used for buttons on pages with no
+     sign-in system, and to render whatever was saved before this existed) ---- */
   function toggleLocal(btn) {
     var slug = btn.getAttribute("data-fav-slug");
     var list = loadLocal();
@@ -68,6 +70,42 @@
       announce("Removed from your favourites.");
     }
     saveLocal(list);
+  }
+
+  /* ---- signed-out + sign-in available: prompt to sign in, then finish the
+     save once they do. Stored in localStorage (not memory) because Google
+     sign-in reloads the page. ---- */
+  var PENDING_KEY = "spooky-bites-pending-fav";
+  var PENDING_TTL_MS = 10 * 60 * 1000;
+
+  function setPendingFav(slug) {
+    try {
+      localStorage.setItem(PENDING_KEY, JSON.stringify({ slug: slug, ts: Date.now() }));
+    } catch (e) { /* ignore */ }
+  }
+
+  function takePendingFav() {
+    var raw;
+    try {
+      raw = localStorage.getItem(PENDING_KEY);
+      localStorage.removeItem(PENDING_KEY);
+    } catch (e) { return null; }
+    if (!raw) return null;
+    try {
+      var data = JSON.parse(raw);
+      if (data && data.slug && Date.now() - data.ts < PENDING_TTL_MS) return data.slug;
+    } catch (e) { /* ignore */ }
+    return null;
+  }
+
+  function promptSignInToSave(btn) {
+    setPendingFav(btn.getAttribute("data-fav-slug"));
+    var toggle = document.getElementById("account-toggle");
+    if (toggle && toggle.getAttribute("data-signed-in") === "false") {
+      toggle.click();
+    } else {
+      toggleLocal(btn); // no sign-in system on this page — fall back as before
+    }
   }
 
   /* ---- signed-in: synced to the visitor's account in Supabase ---- */
@@ -108,23 +146,41 @@
     });
   }
 
+  function applyPendingFavourite() {
+    var slug = takePendingFav();
+    if (!slug) return Promise.resolve();
+    return recipeIdFor(slug).then(function (recipeId) {
+      if (!recipeId) return;
+      return db.from("user_favourites").insert({ user_id: session.user.id, recipe_id: recipeId }).then(function (res) {
+        if (!res.error || res.error.code === "23505") announce("Signed in — saved to your favourites.");
+      });
+    });
+  }
+
   buttons.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      if (session) toggleRemote(btn); else toggleLocal(btn);
+      if (session) toggleRemote(btn);
+      else promptSignInToSave(btn);
     });
   });
 
   renderFromList(loadLocal());
 
   if (db) {
+    function onSignedIn() {
+      applyPendingFavourite().then(function () {
+        loadRemoteSlugs().then(renderFromList);
+      });
+    }
+
     db.auth.onAuthStateChange(function (_event, sess) {
       session = sess;
-      if (session) loadRemoteSlugs().then(renderFromList);
+      if (session) onSignedIn();
       else renderFromList(loadLocal());
     });
     db.auth.getSession().then(function (res) {
       session = res.data.session;
-      if (session) loadRemoteSlugs().then(renderFromList);
+      if (session) onSignedIn();
     });
   }
 })();
