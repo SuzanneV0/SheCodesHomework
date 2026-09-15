@@ -4,6 +4,7 @@
   "use strict";
 
   var $ = function (id) { return document.getElementById(id); };
+  var authLoading = $("auth-loading");
   var prompt = $("signed-out-prompt");
   var panel = $("settings-panel");
   if (!prompt || !panel) return;
@@ -38,6 +39,8 @@
   });
 
   function saveField(field, value, checkbox, previous) {
+    var session = window.spookyBitesSession;
+    if (!session) return;
     var payload = {};
     payload[field] = value;
     db.from("profiles").update(payload).eq("id", session.user.id).then(function (res) {
@@ -47,6 +50,7 @@
         return;
       }
       flashSuccess("Saved.");
+      if (window.spookyToast) window.spookyToast("Saved.");
       if (field === "dark_mode_default") {
         try {
           if (value) localStorage.setItem("spooky-bites-theme-account-default", "dark");
@@ -69,6 +73,7 @@
   document.addEventListener("spookybites:auth", function (e) {
     db = window.spookyBitesDb;
     session = e.detail.session;
+    if (authLoading) authLoading.hidden = true;
     if (session) {
       prompt.hidden = true;
       panel.hidden = false;

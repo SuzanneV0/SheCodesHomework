@@ -35,9 +35,10 @@
   status.setAttribute("role", "status");
   status.setAttribute("aria-live", "polite");
   document.body.appendChild(status);
-  function announce(msg) {
+  function announce(msg, isError) {
     status.textContent = "";
     status.textContent = msg;
+    if (window.spookyToast) window.spookyToast(msg, isError ? "error" : undefined);
   }
 
   function setPressed(btn, on) {
@@ -139,7 +140,7 @@
         ? db.from("user_favourites").delete().eq("user_id", session.user.id).eq("recipe_id", recipeId)
         : db.from("user_favourites").insert({ user_id: session.user.id, recipe_id: recipeId });
       op.then(function (res) {
-        if (res.error) { announce(res.error.message); return; }
+        if (res.error) { announce(res.error.message, true); return; }
         setPressed(btn, !wasOn);
         announce(wasOn ? "Removed from your favourites." : "Saved to your favourites.");
       });

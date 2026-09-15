@@ -3,103 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Settings · Spooky Bites</title>
-  <meta name="description" content="Manage your Spooky Bites notification and dark-mode preferences." />
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Something Went Wrong · Spooky Bites</title>
+  <meta name="description" content="Something broke on our end. Here's the way back to the kitchen." />
+  <meta name="robots" content="noindex, follow" />
   <meta name="theme-color" content="#241019" />
-  <link rel="canonical" href="https://she-codes-homework-blush.vercel.app/settings.html" />
-  <link rel="icon" href="favicon.svg" />
+
+  <link rel="icon" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="preconnect" href="https://itwsbzoampkxwdmtwvoo.supabase.co" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Ysabeau:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="fdd98042-a1b7-4059-95fd-32f2c62d44c1"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
   <nav class="site-nav" aria-label="Primary">
     <div class="nav-inner">
-      <a class="nav-brand" href="index.html" aria-label="Spooky Bites"><span aria-hidden="true">🧁</span> Sp<span class="pumpkin-o" aria-hidden="true"></span><span class="pumpkin-o" aria-hidden="true"></span>ky Bites</a>
+      <a class="nav-brand" href="/index.html" aria-label="Spooky Bites"><span aria-hidden="true">🧁</span> Sp<span class="pumpkin-o" aria-hidden="true"></span><span class="pumpkin-o" aria-hidden="true"></span>ky Bites</a>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="recipes.html">Recipes</a></li>
-        <li><a href="techniques.html">Techniques</a></li>
-        <li><a href="menu-planner.html">Menu</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="quiz.html">Quiz</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/recipes.html">Recipes</a></li>
+        <li><a href="/techniques.html">Techniques</a></li>
+        <li><a href="/menu-planner.html">Menu</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/quiz.html">Quiz</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
       </ul>
       <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">☰</button>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">🌙</button>
-      <a href="account.html" id="profile-link" class="account-toggle" hidden>My Profile</a>
-      <a href="settings.html" id="settings-link" class="account-toggle" hidden>Settings</a>
+      <a href="/account.html" id="profile-link" class="account-toggle" hidden>My Profile</a>
+      <a href="/settings.html" id="settings-link" class="account-toggle" hidden>Settings</a>
       <button id="account-toggle" class="account-toggle" type="button" data-signed-in="false" aria-label="Sign in to Spooky Bites">Sign in</button>
     </div>
   </nav>
 
   <header class="page-hero">
-    <h1>Settings</h1>
-    <p>A couple of preferences, saved to your account.</p>
+    <h1>Something Went Wrong</h1>
+    <p>Even a well-tested cauldron boils over sometimes.</p>
   </header>
 
-  <main id="main" tabindex="-1" class="page-content container">
-    <p id="auth-loading" class="loading-note" style="justify-content:center;"><span class="spinner" aria-hidden="true"></span> Checking your session…</p>
-
-    <div id="signed-out-prompt" class="profile-card signed-out-prompt" hidden>
-      <p>Sign in to view and change your settings.</p>
-      <button class="btn" type="button" id="prompt-sign-in">Sign in</button>
-    </div>
-
-    <div id="settings-panel" class="profile-card" hidden>
-      <p class="form-error" id="settings-error" role="alert" hidden></p>
-      <p class="form-success" id="settings-success" role="status" hidden></p>
-
-      <div class="switch-row">
-        <div class="switch-copy">
-          <span class="switch-label">New recipe notifications</span>
-          <span class="switch-hint">
-            Saved to your profile — Spooky Bites doesn't send real emails yet, but
-            this is where that preference will live.
-          </span>
-        </div>
-        <label class="switch">
-          <input type="checkbox" id="notify-toggle" />
-          <span class="switch-slider" aria-hidden="true"></span>
-        </label>
-      </div>
-
-      <div class="switch-row">
-        <div class="switch-copy">
-          <span class="switch-label">Dark mode by default</span>
-          <span class="switch-hint">Sign in on a new device and it opens in dark mode, until you switch it there yourself.</span>
-        </div>
-        <label class="switch">
-          <input type="checkbox" id="dark-mode-toggle" />
-          <span class="switch-slider" aria-hidden="true"></span>
-        </label>
-      </div>
-    </div>
+  <main id="main" tabindex="-1" class="page-content container" style="text-align: center;">
+    <p style="font-size: 3.5rem; margin: 1rem 0;" aria-hidden="true">🔥🧁</p>
+    <p style="color: var(--muted); margin-bottom: 1.75rem;">
+      Something broke loading that page. It's likely temporary — try refreshing, or head back
+      and try again in a moment.
+    </p>
+    <p>
+      <button class="btn btn-glow" type="button" onclick="location.reload()">Try again</button>
+      <a class="btn btn-secondary" href="/index.html">Back to the home page</a>
+    </p>
+    <p style="margin-top: 1.5rem;">
+      Still stuck? <a href="/contact.html">Let us know</a> what happened.
+    </p>
   </main>
 
   <footer>
     <div class="footer-inner">
       <ul class="footer-nav" role="list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="recipes.html">Recipes</a></li>
-        <li><a href="techniques.html">Techniques</a></li>
-        <li><a href="menu-planner.html">Menu</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="quiz.html">Quiz</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/recipes.html">Recipes</a></li>
+        <li><a href="/techniques.html">Techniques</a></li>
+        <li><a href="/menu-planner.html">Menu</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/quiz.html">Quiz</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
       </ul>
       <ul class="footer-legal" role="list">
-        <li><a href="terms.html">Terms of Use</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="cookies.html">Cookie Policy</a></li>
+        <li><a href="/terms.html">Terms of Use</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/cookies.html">Cookie Policy</a></li>
       </ul>
       <p class="footer-copyright">&copy; 2026 Spooky Bites. Baked with <span aria-hidden="true">🧡</span> for Halloween.</p>
     </div>
@@ -145,9 +122,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
-  <script src="js/site.js" defer></script>
-  <script src="js/toast.js" defer></script>
-  <script src="js/account.js" defer></script>
-  <script src="js/settings.js" defer></script>
+  <script src="/js/site.js" defer></script>
+  <script src="/js/toast.js" defer></script>
+  <script src="/js/account.js" defer></script>
 </body>
 </html>

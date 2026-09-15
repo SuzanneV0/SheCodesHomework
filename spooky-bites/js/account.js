@@ -130,6 +130,7 @@
   }
 
   function broadcast(session, profile) {
+    window.spookyBitesSession = session || null;
     window.spookyBitesProfile = profile || null;
     document.dispatchEvent(new CustomEvent("spookybites:auth", {
       detail: { session: session, profile: profile || null }

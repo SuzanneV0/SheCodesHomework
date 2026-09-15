@@ -100,6 +100,7 @@
   }
 
   function loadReviews() {
+    summaryEl.innerHTML = '<span class="loading-note"><span class="spinner" aria-hidden="true"></span> Loading ratings…</span>';
     return db.from("recipe_reviews").select("rating, body").eq("recipe_id", recipeId).then(function (res) {
       renderReviews(res.data || []);
     });
@@ -133,21 +134,25 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!session || !recipeId) return;
+    var currentSession = window.spookyBitesSession || session;
+    if (!currentSession || !recipeId) return;
     var rating = Number(ratingInput.value);
     if (!rating) { showError("Pick a star rating first."); return; }
     showError("");
     showSuccess("");
     submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting…";
     db.from("recipe_reviews").upsert({
-      user_id: session.user.id,
+      user_id: currentSession.user.id,
       recipe_id: recipeId,
       rating: rating,
       body: bodyInput.value.trim() || null
     }, { onConflict: "user_id,recipe_id" }).then(function (res) {
       submitBtn.disabled = false;
+      submitBtn.textContent = "Submit rating";
       if (res.error) { showError(res.error.message); return; }
       showSuccess("Thanks for rating this recipe!");
+      if (window.spookyToast) window.spookyToast("Rating submitted — thanks!");
       loadReviews();
     });
   });

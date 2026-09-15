@@ -756,7 +756,9 @@ img {
   line-height: 1;
   color: var(--card-border);
   cursor: pointer;
-  padding: 0.1rem;
+  padding: 0.5rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
 }
 
 .star-btn.on {
@@ -843,8 +845,20 @@ img {
     order: 3;
   }
 
-  .nav-links {
+  #profile-link {
     order: 4;
+  }
+
+  #settings-link {
+    order: 5;
+  }
+
+  #account-toggle {
+    order: 6;
+  }
+
+  .nav-links {
+    order: 7;
     display: none;
     flex-basis: 100%;
     flex-direction: column;
@@ -2025,5 +2039,93 @@ article.page-article h2::after,
     content: " (" attr(href) ")";
     font-size: 0.85em;
     word-break: break-all;
+  }
+}
+
+/* ---------- Toasts ---------- */
+.toast-stack {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--aubergine, #241019);
+  color: #f2e9d6;
+  border: 1px solid var(--gold);
+  border-radius: 0.4rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.5);
+  max-width: 90vw;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(0.6rem);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.toast-error {
+  border-color: var(--oxblood, #7a2438);
+}
+
+.toast-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-out {
+  opacity: 0;
+  transform: translateY(0.4rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: opacity 0.15s linear;
+    transform: none;
+  }
+}
+
+/* ---------- Loading states ---------- */
+.loading-note {
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 1rem 0;
+}
+
+.loading-note[hidden] {
+  display: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--card-border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex: 0 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+    border-top-color: var(--card-border);
   }
 }

@@ -2,6 +2,21 @@
 (function () {
   "use strict";
 
+  /* ---- Friendly feedback for unexpected runtime errors ----
+     Doesn't navigate anywhere (a broken page shouldn't yank people off
+     it) — just lets them know something went wrong via a toast. See
+     error.html for the site's dedicated "something broke" page. */
+  var lastErrorToast = 0;
+  function notifyUnexpectedError() {
+    if (!window.spookyToast) return;
+    var now = Date.now();
+    if (now - lastErrorToast < 4000) return; // avoid a pile-up of toasts
+    lastErrorToast = now;
+    window.spookyToast("Something went wrong. Try refreshing the page.", "error");
+  }
+  window.addEventListener("error", notifyUnexpectedError);
+  window.addEventListener("unhandledrejection", notifyUnexpectedError);
+
   /* ---- Theme toggle ---- */
   var root = document.documentElement;
   var toggleBtn = document.getElementById("theme-toggle");

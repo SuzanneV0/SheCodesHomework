@@ -7,10 +7,17 @@
   "use strict";
 
   var $ = function (id) { return document.getElementById(id); };
+  var authLoading = $("auth-loading");
   var prompt = $("signed-out-prompt");
   var content = $("profile-content");
   var form = $("profile-form");
   if (!prompt || !content || !form) return;
+
+  var LOADING = '<li class="loading-note"><span class="spinner" aria-hidden="true"></span> Loading…</li>';
+
+  function toast(msg, kind) {
+    if (window.spookyToast) window.spookyToast(msg, kind);
+  }
 
   function esc(v) {
     return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
@@ -44,7 +51,6 @@
   var myRecipeList = $("my-recipe-list");
 
   var db = null;
-  var session = null;
   var recipesLoaded = false;
 
   function showError(msg) {
@@ -78,6 +84,7 @@
   avatarInput.addEventListener("change", function () {
     var file = avatarInput.files[0];
     avatarInput.value = "";
+    var session = window.spookyBitesSession;
     if (!file || !db || !session) return;
 
     showError("");
@@ -92,6 +99,7 @@
     var path = session.user.id + "/avatar." + ext;
 
     avatarPick.disabled = true;
+    avatarPick.textContent = "Uploading…";
     db.storage.from("avatars").upload(path, file, { upsert: true, contentType: file.type })
       .then(function (res) {
         if (res.error) { showError(res.error.message); return; }
@@ -101,18 +109,21 @@
             if (updateRes.error) { showError(updateRes.error.message); return; }
             avatarPreview.src = publicUrl + "?t=" + Date.now();
             showSuccess("Avatar updated.");
+            toast("Avatar updated.");
           });
       })
       .catch(function (err) { showError(err.message || "Could not upload that image."); })
-      .then(function () { avatarPick.disabled = false; });
+      .then(function () { avatarPick.disabled = false; avatarPick.textContent = "Change avatar"; });
   });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    var session = window.spookyBitesSession;
     if (!db || !session) return;
     showError("");
     showSuccess("");
     saveBtn.disabled = true;
+    saveBtn.textContent = "Saving…";
 
     var payload = {
       display_name: $("display-name").value.trim() || null,
@@ -122,15 +133,19 @@
 
     db.from("profiles").update(payload).eq("id", session.user.id).then(function (res) {
       saveBtn.disabled = false;
+      saveBtn.textContent = "Save changes";
       if (res.error) { showError(res.error.message); return; }
       showSuccess("Profile saved.");
+      toast("Profile saved.");
     });
   });
 
   /* ------------------------------------------------------------------ */
   /* My Favourites (read-only)                                          */
   /* ------------------------------------------------------------------ */
-  function loadFavourites() {
+  function loadFavourites(session) {
+    favEmpty.hidden = true;
+    favList.innerHTML = LOADING;
     return db.from("user_favourites")
       .select("recipes(title)")
       .eq("user_id", session.user.id)
@@ -162,7 +177,8 @@
     return i === -1 ? null : url.slice(i + marker.length);
   }
 
-  function loadMyPhotos() {
+  function loadMyPhotos(session) {
+    photoList.innerHTML = LOADING;
     return db.from("user_recipe_photos")
       .select("id, image_url, recipes(title)")
       .eq("user_id", session.user.id)
@@ -177,23 +193,25 @@
         }).join("");
         photoList.querySelectorAll("[data-del-photo]").forEach(function (btn) {
           btn.addEventListener("click", function () {
-            deletePhoto(Number(btn.getAttribute("data-del-photo")), btn.getAttribute("data-url"));
+            deletePhoto(Number(btn.getAttribute("data-del-photo")), btn.getAttribute("data-url"), session);
           });
         });
       });
   }
 
-  function deletePhoto(id, url) {
+  function deletePhoto(id, url, session) {
     db.from("user_recipe_photos").delete().eq("id", id).eq("user_id", session.user.id).then(function (res) {
       if (res.error) { photoError.textContent = res.error.message; photoError.hidden = false; return; }
       var path = storagePathFromPublicUrl(url);
       if (path) db.storage.from("recipe-photos").remove([path]);
-      loadMyPhotos();
+      toast("Photo removed.");
+      loadMyPhotos(session);
     });
   }
 
   photoForm.addEventListener("submit", function (e) {
     e.preventDefault();
+    var session = window.spookyBitesSession;
     if (!db || !session) return;
     photoError.hidden = true;
     photoSuccess.hidden = true;
@@ -212,6 +230,7 @@
     var path = session.user.id + "/" + Date.now() + "." + ext;
 
     photoSubmit.disabled = true;
+    photoSubmit.textContent = "Uploading…";
     db.storage.from("recipe-photos").upload(path, file, { contentType: file.type })
       .then(function (res) {
         if (res.error) { photoError.textContent = res.error.message; photoError.hidden = false; return; }
@@ -225,17 +244,19 @@
           photoForm.reset();
           photoSuccess.textContent = "Photo uploaded.";
           photoSuccess.hidden = false;
-          loadMyPhotos();
+          toast("Photo uploaded.");
+          loadMyPhotos(session);
         });
       })
       .catch(function (err) { photoError.textContent = err.message || "Could not upload that photo."; photoError.hidden = false; })
-      .then(function () { photoSubmit.disabled = false; });
+      .then(function () { photoSubmit.disabled = false; photoSubmit.textContent = "Upload photo"; });
   });
 
   /* ------------------------------------------------------------------ */
   /* My Recipes (original, own text)                                    */
   /* ------------------------------------------------------------------ */
-  function loadMyRecipes() {
+  function loadMyRecipes(session) {
+    myRecipeList.innerHTML = LOADING;
     return db.from("user_recipes")
       .select("id, title, body")
       .eq("user_id", session.user.id)
@@ -251,20 +272,21 @@
           : '<li class="muted-note">You haven’t added any recipes yet.</li>';
         myRecipeList.querySelectorAll("[data-del-recipe]").forEach(function (btn) {
           btn.addEventListener("click", function () {
-            deleteMyRecipe(Number(btn.getAttribute("data-del-recipe")));
+            deleteMyRecipe(Number(btn.getAttribute("data-del-recipe")), session);
           });
         });
       });
   }
 
-  function deleteMyRecipe(id) {
+  function deleteMyRecipe(id, session) {
     db.from("user_recipes").delete().eq("id", id).eq("user_id", session.user.id).then(function (res) {
-      if (!res.error) loadMyRecipes();
+      if (!res.error) { toast("Recipe removed."); loadMyRecipes(session); }
     });
   }
 
   myRecipeForm.addEventListener("submit", function (e) {
     e.preventDefault();
+    var session = window.spookyBitesSession;
     if (!db || !session) return;
     myRecipeError.hidden = true;
     myRecipeSuccess.hidden = true;
@@ -274,26 +296,30 @@
     if (!title || !body) return;
 
     myRecipeSubmit.disabled = true;
+    myRecipeSubmit.textContent = "Adding…";
     db.from("user_recipes").insert({ user_id: session.user.id, title: title, body: body }).then(function (res) {
       myRecipeSubmit.disabled = false;
+      myRecipeSubmit.textContent = "Add recipe";
       if (res.error) { myRecipeError.textContent = res.error.message; myRecipeError.hidden = false; return; }
       myRecipeForm.reset();
       myRecipeSuccess.textContent = "Recipe added.";
       myRecipeSuccess.hidden = false;
-      loadMyRecipes();
+      toast("Recipe added.");
+      loadMyRecipes(session);
     });
   });
 
   document.addEventListener("spookybites:auth", function (e) {
     db = window.spookyBitesDb;
-    session = e.detail.session;
+    var session = e.detail.session;
+    if (authLoading) authLoading.hidden = true;
     if (session) {
       prompt.hidden = true;
       content.hidden = false;
       fillForm(e.detail.profile);
-      loadFavourites();
-      loadRecipesForSelect().then(loadMyPhotos);
-      loadMyRecipes();
+      loadFavourites(session);
+      loadRecipesForSelect().then(function () { loadMyPhotos(session); });
+      loadMyRecipes(session);
     } else {
       prompt.hidden = false;
       content.hidden = true;

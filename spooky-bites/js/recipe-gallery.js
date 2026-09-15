@@ -21,6 +21,9 @@
     });
   }
 
+  if (empty) empty.hidden = true;
+  list.innerHTML = '<li class="loading-note"><span class="spinner" aria-hidden="true"></span> Loading photos…</li>';
+
   db.from("recipes").select("id").eq("slug", slug).single().then(function (res) {
     if (!res.data) return;
     return db.from("user_recipe_photos")

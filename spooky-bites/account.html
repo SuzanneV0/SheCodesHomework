@@ -46,7 +46,9 @@
   </header>
 
   <main id="main" tabindex="-1" class="page-content container">
-    <div id="signed-out-prompt" class="profile-card signed-out-prompt">
+    <p id="auth-loading" class="loading-note" style="justify-content:center;"><span class="spinner" aria-hidden="true"></span> Checking your session…</p>
+
+    <div id="signed-out-prompt" class="profile-card signed-out-prompt" hidden>
       <p>Sign in to view and edit your profile.</p>
       <button class="btn" type="button" id="prompt-sign-in">Sign in</button>
     </div>
@@ -193,6 +195,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
   <script src="js/site.js" defer></script>
+  <script src="js/toast.js" defer></script>
   <script src="js/account.js" defer></script>
   <script src="js/profile.js" defer></script>
 </body>
