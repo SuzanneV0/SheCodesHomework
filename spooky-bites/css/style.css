@@ -845,18 +845,6 @@ img {
     order: 3;
   }
 
-  #profile-link {
-    order: 4;
-  }
-
-  #settings-link {
-    order: 5;
-  }
-
-  #account-toggle {
-    order: 6;
-  }
-
   .nav-links {
     order: 7;
     display: none;
@@ -874,6 +862,32 @@ img {
   .nav-links a {
     width: 100%;
     padding: 0.65rem 0.6rem;
+  }
+
+  /* Sign in/out, My Profile, and Settings fold into the same hamburger
+     dropdown as the page links, instead of sitting in the top bar. */
+  #profile-link,
+  #settings-link,
+  #account-toggle {
+    order: 8;
+    flex-basis: 100%;
+    width: 100%;
+    text-align: center;
+    display: none;
+    margin-top: 0.4rem;
+  }
+
+  #profile-link.menu-open,
+  #settings-link.menu-open,
+  #account-toggle.menu-open {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #profile-link[hidden],
+  #settings-link[hidden] {
+    display: none;
   }
 }
 

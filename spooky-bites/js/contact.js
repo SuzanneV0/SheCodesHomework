@@ -26,6 +26,7 @@
 
     var name = document.getElementById("contact-name");
     var email = document.getElementById("contact-email");
+    var message = document.getElementById("contact-message");
     var robotCheck = document.getElementById("contact-not-robot");
 
     if (name && !name.value.trim()) {
@@ -36,6 +37,9 @@
     }
     if (email && !email.checkValidity()) {
       return showError("Please enter a valid email address.", email);
+    }
+    if (message && !message.value.trim()) {
+      return showError("Please enter a message.", message);
     }
     if (robotCheck && !robotCheck.checked) {
       return showError("Please confirm you are not a robot.", robotCheck);

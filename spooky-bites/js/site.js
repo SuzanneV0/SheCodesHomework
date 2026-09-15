@@ -80,23 +80,37 @@
   var navToggle = document.getElementById("nav-toggle");
   var navLinks = document.getElementById("nav-links");
   var MOBILE_BREAKPOINT = 860;
+  // Account actions live in the top bar on desktop, but fold into the
+  // hamburger dropdown on mobile alongside the page links.
+  var accountMenuItems = Array.prototype.slice.call(
+    document.querySelectorAll("#profile-link, #settings-link, #account-toggle")
+  );
+
+  function setMenuOpen(isOpen) {
+    if (!navLinks || !navToggle) return;
+    navLinks.classList.toggle("open", isOpen);
+    accountMenuItems.forEach(function (el) { el.classList.toggle("menu-open", isOpen); });
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    navToggle.textContent = isOpen ? "✕" : "☰";
+  }
 
   function closeNavMenu() {
-    if (!navLinks || !navToggle) return;
-    navLinks.classList.remove("open");
-    navToggle.setAttribute("aria-expanded", "false");
-    navToggle.textContent = "☰";
+    setMenuOpen(false);
   }
 
   if (navToggle && navLinks) {
     navToggle.addEventListener("click", function () {
-      var isOpen = navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      navToggle.textContent = isOpen ? "✕" : "☰";
+      setMenuOpen(!navLinks.classList.contains("open"));
     });
 
     navLinks.addEventListener("click", function (e) {
       if (e.target.tagName === "A") closeNavMenu();
+    });
+
+    accountMenuItems.forEach(function (el) {
+      el.addEventListener("click", function () {
+        if (window.innerWidth <= MOBILE_BREAKPOINT) closeNavMenu();
+      });
     });
 
     window.addEventListener("resize", function () {
